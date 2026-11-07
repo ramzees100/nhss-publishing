@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NHSS Publishing | Science, Scholarship & Discovery</title>
+
+  <meta
+    name="description"
+    content="NHSS Publishing is an independent scholarly publishing initiative spanning Natural Sciences, Humanities, and Social Sciences."
+  >
+
+  <style>
+    :root {
+      --navy: #08344c;
+      --navy-dark: #052638;
+      --blue: #006da0;
+      --teal: #a7e1d2;
+      --ink: #183344;
+      --muted: #5d707c;
+      --line: #dce5eb;
+      --light: #f3f7fa;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid #d79c28;
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(1180px, 90%);
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -100px;
+      z-index: 10;
+      padding: 10px 16px;
+      background: white;
+      color: var(--navy);
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .utility {
+      background: var(--navy-dark);
+      color: #dbe8ef;
+      font-size: 12px;
+    }
+
+    .utility-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 9px;
+    }
+
+    .utility a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding-block: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      color: var(--blue);
+      border: 2px solid var(--blue);
+      font-family: Georgia, serif;
+      font-size: 35px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .brand-name {
+      display: block;
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      line-height: 1.1;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: 7px;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .main-nav a:hover,
+    .footer-links a:hover {
+      color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .menu-toggle {
+      display: none;
+      padding: 7px 12px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--line);
+      cursor: pointer;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border: 1px solid var(--blue);
+      background: var(--blue);
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .button:hover {
+      background: #005781;
+    }
+
+    .button-light {
+      border-color: white;
+      background: white;
+      color: var(--navy);
+    }
+
+    .button-light:hover {
+      background: #eaf3f7;
+    }
+
+    .button-outline {
+      border-color: #a6bac6;
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .button-outline:hover {
+      background: #e9f1f6;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      color: white;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 35px;
+      min-height: 480px;
+      padding-block: 65px;
+    }
+
+    .eyebrow {
+      margin: 0 0 17px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow {
+      color: var(--teal);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 4.8vw, 62px);
+      font-weight: normal;
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+    }
+
+    h1 span {
+      color: var(--teal);
+    }
+
+    .hero-description {
+      max-width: 530px;
+      margin-bottom: 28px;
+      color: #d6e5ed;
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .hero-link {
+      font-size: 14px;
+    }
+
+    .hero-link:hover {
+      text-decoration: underline;
+    }
+
+    .science-art {
+      width: 100%;
+      max-width: 480px;
+      justify-self: center;
+    }
+
+    .pathways {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pathway {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 28px 24px;
+      border-right: 1px solid var(--line);
+    }
+
+    .pathway:last-child {
+      border-right: 0;
+    }
+
+    .pathway:hover {
+      background: var(--light);
+    }
+
+    .pathway-number {
+      color: var(--blue);
+      font-family: Georgia, serif;
+      font-size: 26px;
+      line-height: 1.4;
+    }
+
+    .pathway strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
+
+    .pathway small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .section {
+      padding-block: 68px;
+    }
+
+    .section-light {
+      background: var(--light);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(29px, 3vw, 38px);
+      font-weight: normal;
+      line-height: 1.25;
+    }
+
+    .section-intro {
+      max-width: 730px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .text-link {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .field-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--blue);
+      background: white;
+    }
+
+    .field-card:nth-child(2) {
+      border-top-color: #8b6f47;
+    }
+
+    .field-card:nth-child(3) {
+      border-top-color: #338270;
+    }
+
+    .field-index {
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    h3 {
+      margin-bottom: 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: normal;
+      line-height: 1.3;
+    }
+
+    .field-card p,
+    .feature-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    details {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    summary {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    details ul {
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .publication-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .publication-panel {
+      padding: 32px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .status-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 5px 10px;
+      background: #edf2f5;
+      color: #516775;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .access-row {
+      padding-block: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .access-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .access-row strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .access-row p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .access-tag {
+      display: inline-block;
+      margin-right: 8px;
+      padding: 3px 8px;
+      background: #e7f4ed;
+      color: #22634c;
+      font-size: 11px;
+      vertical-align: middle;
+    }
+
+    .access-tag-paid {
+      background: #f5eddd;
+      color: #7c602d;
+    }
+
+    .feature-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .feature-card h3 {
+      font-size: 23px;
+    }
+
+    .feature-step {
+      margin-bottom: 14px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .notice {
+      margin-top: 26px;
+      padding: 15px 18px;
+      border-left: 3px solid var(--blue);
+      background: #eaf2f7;
+      color: #435e70;
+      font-size: 13px;
+    }
+
+    .mission-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+    }
+
+    .principle {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .principle:first-child {
+      padding-top: 0;
+    }
+
+    .principle h3 {
+      margin-bottom: 6px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .principle p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .community {
+      background: var(--navy);
+      color: white;
+    }
+
+    .community .eyebrow {
+      color: var(--teal);
+    }
+
+    .community-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .community p {
+      color: #d6e5ed;
+    }
+
+    .community-options {
+      display: grid;
+      gap: 14px;
+    }
+
+    .community-option {
+      padding: 18px 20px;
+      border: 1px solid #507184;
+    }
+
+    .community-option strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .community-option span {
+      color: #c4d8e3;
+      font-size: 13px;
+    }
+
+    footer {
+      padding-block: 45px 24px;
+      background: #f6f8fa;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    .footer-description {
+      max-width: 370px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-title {
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 1000px) {
+      .header-inner {
+        flex-wrap: wrap;
+      }
+
+      .main-nav {
+        justify-content: center;
+        order: 3;
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .hero-inner {
+        gap: 10px;
+      }
+
+      .field-card {
+        padding: 24px;
+      }
+
+      .publication-layout {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: 88%;
+      }
+
+      .utility-inner {
+        justify-content: center;
+      }
+
+      .utility-inner span {
+        display: none;
+      }
+
+      .header-inner {
+        gap: 18px;
+        padding-block: 20px;
+      }
+
+      .brand-name {
+        font-size: 23px;
+      }
+
+      .brand-subtitle {
+        font-size: 8px;
+        letter-spacing: 2px;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 44px;
+        font-size: 31px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .header-action {
+        display: none;
+      }
+
+      .main-nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding-top: 15px;
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding-block: 45px 20px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .science-art {
+        max-width: 300px;
+        max-height: 230px;
+      }
+
+      .pathways,
+      .three-column,
+      .publication-layout,
+      .mission-layout,
+      .community-inner,
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+      .pathway {
+        padding: 20px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .pathway:last-child {
+        border-bottom: 0;
+      }
+
+      .section {
+        padding-block: 45px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .mission-layout,
+      .community-inner {
+        gap: 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="utility">
+    <div class="container utility-inner">
+      <span>Natural Sciences, Humanities, and Social Sciences</span>
+      <a href="#about">Independent scholarship. Global participation.</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="NHSS Publishing home">
+        <span class="brand-mark" aria-hidden="true">N</span>
+
+        <span>
+          <span class="brand-name">NHSS</span>
+          <span class="brand-subtitle">Publishing & Discovery</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-controls="main-navigation"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+
+      <nav
+        class="main-nav"
+        id="main-navigation"
+        aria-label="Main navigation"
+      >
+        <a href="#about">About NHSS</a>
+        <a href="#publications">Publications</a>
+        <a href="#research-fields">Research Fields</a>
+        <a href="#authors">For Authors</a>
+        <a href="#community">Community</a>
+      </nav>
+
+      <a class="button header-action" href="#authors">
+        Publish with NHSS ↗
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">An independent scholarly publishing initiative</p>
+
+          <h1 id="hero-title">
+            Advancing knowledge.<br>
+            <span>Connecting discovery.</span>
+          </h1>
+
+          <p class="hero-description">
+            A developing home for research across the natural sciences,
+            humanities, and social sciences—welcoming ideas from researchers
+            around the world.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-light" href="#research-fields">
+              Explore research fields →
+            </a>
+
+            <a class="hero-link" href="#about">
+              Discover our mission ↗
+            </a>
+          </div>
+        </div>
+
+        <svg
+          class="science-art"
+          viewBox="0 0 500 420"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <defs>
+            <radialGradient id="glow">
+              <stop offset="0%" stop-color="#85dfcf" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#85dfcf" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <circle cx="250" cy="210" r="195" fill="url(#glow)"/>
+
+          <g fill="none" stroke="#8cc6d1" stroke-width="0.9" opacity="0.65">
+            <ellipse cx="250" cy="210" rx="185" ry="125"/>
+            <ellipse cx="250" cy="210" rx="185" ry="125"
+                     transform="rotate(60 250 210)"/>
+            <ellipse cx="250" cy="210" rx="185" ry="125"
+                     transform="rotate(120 250 210)"/>
+            <ellipse cx="250" cy="210" rx="85" ry="175"/>
+            <ellipse cx="250" cy="210" rx="155" ry="60"/>
+            <path d="M65 210H435 M250 35V385"/>
+            <path d="M125 90L375 330 M125 330L375 90"/>
+          </g>
+
+          <g fill="#b4eddd">
+            <circle cx="250" cy="35" r="6"/>
+            <circle cx="65" cy="210" r="5"/>
+            <circle cx="435" cy="210" r="6"/>
+            <circle cx="250" cy="385" r="5"/>
+            <circle cx="125" cy="90" r="5"/>
+            <circle cx="375" cy="330" r="7"/>
+            <circle cx="250" cy="210" r="7"/>
+          </g>
+
+          <text
+            x="250"
+            y="412"
+            text-anchor="middle"
+            fill="#b7d3df"
+            font-size="10"
+            letter-spacing="3"
+            font-family="Arial, sans-serif"
+          >
+            KNOWLEDGE WITHOUT BOUNDARIES
+          </text>
+        </svg>
+      </div>
+    </section>
+
+    <div class="container pathways">
+      <a class="pathway" href="#publications">
+        <span class="pathway-number">01</span>
+        <span>
+          <strong>Explore publications ↗</strong>
+          <small>Discover our proposed publishing program</small>
+        </span>
+      </a>
+
+      <a class="pathway" href="#authors">
+        <span class="pathway-number">02</span>
+        <span>
+          <strong>Prepare your research ↗</strong>
+          <small>Understand the publishing journey</small>
+        </span>
+      </a>
+
+      <a class="pathway" href="#community">
+        <span class="pathway-number">03</span>
+        <span>
+          <strong>Contribute your expertise ↗</strong>
+          <small>Learn about editorial and reviewer roles</small>
+        </span>
+      </a>
+    </div>
+
+    <section class="section" id="research-fields">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Our academic scope</p>
+            <h2>Different disciplines. Shared curiosity.</h2>
+            <p class="section-intro">
+              NHSS brings three broad areas of scholarship into one
+              publishing vision.
+            </p>
+          </div>
+        </div>
+
+        <div class="three-column">
+          <article class="field-card">
+            <span class="field-index">FIELD / 01</span>
+            <h3>Natural Sciences</h3>
+            <p>
+              Investigating the physical world, living systems, and
+              the processes that shape our environment.
+            </p>
+
+            <details>
+              <summary>Explore disciplines</summary>
+              <ul>
+                <li>Physics and astronomy</li>
+                <li>Chemistry</li>
+                <li>Biology and life sciences</li>
+                <li>Earth and environmental sciences</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="field-card">
+            <span class="field-index">FIELD / 02</span>
+            <h3>Humanities</h3>
+            <p>
+              Understanding human experience through history,
+              language, philosophy, culture, and creative expression.
+            </p>
+
+            <details>
+              <summary>Explore disciplines</summary>
+              <ul>
+                <li>History and archaeology</li>
+                <li>Languages and literature</li>
+                <li>Philosophy</li>
+                <li>Arts and cultural studies</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="field-card">
+            <span class="field-index">FIELD / 03</span>
+            <h3>Social Sciences</h3>
+            <p>
+              Examining individuals, communities, institutions,
+              and the relationships that shape society.
+            </p>
+
+            <details>
+              <summary>Explore disciplines</summary>
+              <ul>
+                <li>Psychology and sociology</li>
+                <li>Economics</li>
+                <li>Political science</li>
+                <li>Anthropology and education</li>
+              </ul>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="publications">
+      <div class="container publication-layout">
+        <div>
+          <p class="eyebrow">Research & publications</p>
+          <h2>A publishing program built for discovery.</h2>
+
+          <p class="section-intro">
+            The planned NHSS research library will bring journal articles,
+            abstracts, references, and publication information together
+            in a searchable collection.
+          </p>
+
+          <div class="notice">
+            NHSS Publishing is in development. Journals and articles
+            have not yet been launched.
+          </div>
+        </div>
+
+        <div class="publication-panel">
+          <span class="status-label">Planned access models</span>
+          <h3>Clear choices for readers</h3>
+
+          <div class="access-row">
+            <strong>
+              <span class="access-tag">OPEN ACCESS</span>
+              Freely available research
+            </strong>
+            <p>
+              Articles designated as open access will be available
+              to read and download without a purchase.
+            </p>
+          </div>
+
+          <div class="access-row">
+            <strong>
+              <span class="access-tag access-tag-paid">PAID ACCESS</span>
+              Individual article access
+            </strong>
+            <p>
+              Selected articles may offer public abstracts with
+              full text available through purchase.
+            </p>
+          </div>
+
+          <div class="access-row">
+            <strong>Subscriptions</strong>
+            <p>
+              Subscription options may be introduced for readers
+              and institutions. Prices and terms are not yet set.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="authors">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">For authors</p>
+            <h2>From research to publication.</h2>
+            <p class="section-intro">
+              Our proposed workflow supports careful evaluation,
+              constructive feedback, and clear editorial decisions.
+            </p>
+          </div>
+        </div>
+
+        <div class="three-column">
+          <article class="feature-card">
+            <p class="feature-step">01 / PREPARE</p>
+            <h3>Prepare your manuscript</h3>
+            <p>
+              Select a suitable journal, follow its author instructions,
+              and provide methods, references, and relevant disclosures.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <p class="feature-step">02 / REVIEW</p>
+            <h3>Editorial assessment</h3>
+            <p>
+              Editors screen submissions and arrange expert review
+              where appropriate. Authors respond to feedback and
+              revise their work.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <p class="feature-step">03 / PUBLISH</p>
+            <h3>Build the scholarly record</h3>
+            <p>
+              Accepted manuscripts move through production and
+              publication, with clearly stated access conditions
+              and article information.
+            </p>
+          </article>
+        </div>
+
+        <div class="notice">
+          Manuscript submissions are not open yet. This website does
+          not currently accept files, create accounts, or collect payments.
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="about">
+      <div class="container mission-layout">
+        <div>
+          <p class="eyebrow">About NHSS Publishing</p>
+          <h2>Research can begin anywhere.</h2>
+
+          <p>
+            NHSS stands for <strong>Natural Sciences, Humanities,
+            and Social Sciences</strong>.
+          </p>
+
+          <p class="section-intro">
+            Our aim is to develop an independent publishing organization
+            welcoming research from universities, institutes, industry,
+            and independent scholars around the world.
+          </p>
+
+          <p class="section-intro" style="margin-top: 18px;">
+            Our publishing program, governance, editorial boards,
+            and operational policies are being developed.
+          </p>
+        </div>
+
+        <div>
+          <article class="principle">
+            <h3>Research quality</h3>
+            <p>
+              Evaluate contributions through appropriate expertise,
+              evidence, and editorial scrutiny.
+            </p>
+          </article>
+
+          <article class="principle">
+            <h3>Editorial independence</h3>
+            <p>
+              Keep scholarly acceptance decisions independent
+              of payment and commercial arrangements.
+            </p>
+          </article>
+
+          <article class="principle">
+            <h3>Transparency</h3>
+            <p>
+              Establish clear policies for authorship, conflicts
+              of interest, fees, licensing, and peer review.
+            </p>
+          </article>
+
+          <article class="principle">
+            <h3>A lasting record</h3>
+            <p>
+              Develop procedures for preservation, corrections,
+              and publication histories before launching journals.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section community" id="community">
+      <div class="container community-inner">
+        <div>
+          <p class="eyebrow">Our future community</p>
+          <h2>Scholarship advances through people.</h2>
+          <p>
+            A strong publishing organization brings authors, reviewers,
+            and editors together around a shared responsibility
+            for the research record.
+          </p>
+          <a class="button button-light" href="#authors">
+            Explore the publishing journey →
+          </a>
+        </div>
+
+        <div class="community-options">
+          <div class="community-option">
+            <strong>Authors</strong>
+            <span>
+              Contribute original scholarship and engage with review.
+            </span>
+          </div>
+
+          <div class="community-option">
+            <strong>Reviewers</strong>
+            <span>
+              Offer informed, constructive, and independent assessment.
+            </span>
+          </div>
+
+          <div class="community-option">
+            <strong>Editors</strong>
+            <span>
+              Guide journal development and accountable decisions.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a class="brand" href="#" aria-label="NHSS Publishing home">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <span>
+              <span class="brand-name">NHSS</span>
+              <span class="brand-subtitle">Publishing & Discovery</span>
+            </span>
+          </a>
+
+          <p class="footer-description">
+            An independent scholarly publishing initiative for
+            Natural Sciences, Humanities, and Social Sciences.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Explore NHSS</h3>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="#about">About the organization</a>
+            <a href="#research-fields">Research fields</a>
+            <a href="#publications">Publications</a>
+          </nav>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Participate</h3>
+          <div class="footer-links">
+            <a href="#authors">For authors</a>
+            <a href="#community">Reviewers and editors</a>
+            <span>Submissions: not yet open</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>
+          © <span id="copyright-year"></span> NHSS Publishing.
+          All rights reserved.
+        </span>
+        <span>Website in development.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#main-navigation");
+
+    menuButton.addEventListener("click", function () {
+      const isOpen = navigation.classList.toggle("open");
+
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+    });
+
+    navigation.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navigation.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+      });
+    });
+
+    document.querySelector("#copyright-year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
