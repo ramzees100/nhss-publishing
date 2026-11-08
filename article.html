@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="NHSS article page demonstration.">
+<title>Article | NHSS Publishing</title>
+
+<style>
+:root {
+  --navy:#08344c;
+  --dark:#052638;
+  --blue:#006da0;
+  --ink:#183344;
+  --muted:#5d707c;
+  --line:#dce5eb;
+  --light:#f3f7fa;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  color:var(--ink);
+  background:white;
+  font-family:Arial,Tahoma,sans-serif;
+  line-height:1.75;
+}
+
+a { color:inherit; text-decoration:none; }
+button,select { font:inherit; }
+button { cursor:pointer; }
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible {
+  outline:3px solid #d79c28;
+  outline-offset:4px;
+}
+
+[hidden] { display:none !important; }
+
+.container {
+  width:min(1180px,90%);
+  margin-inline:auto;
+}
+
+.skip-link {
+  position:absolute;
+  top:-100px;
+  inset-inline-start:12px;
+  padding:10px 16px;
+  background:white;
+  z-index:10;
+}
+
+.skip-link:focus { top:12px; }
+
+.utility {
+  color:#dbe8ef;
+  background:var(--dark);
+}
+
+.utility-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding-block:9px;
+  font-size:12px;
+}
+
+.languages { display:flex; align-items:center; gap:8px; }
+
+.languages button {
+  padding:4px 9px;
+  border:1px solid transparent;
+  color:white;
+  background:transparent;
+  font-size:13px;
+}
+
+.languages button[aria-pressed="true"] {
+  border-color:#8db7ca;
+  background:#ffffff12;
+}
+
+header { border-bottom:1px solid var(--line); }
+
+.header-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+  padding-block:23px;
+}
+
+.brand { display:flex; align-items:center; gap:12px; }
+
+.mark {
+  display:grid;
+  place-items:center;
+  width:46px;
+  height:48px;
+  border:2px solid var(--blue);
+  color:var(--blue);
+  font:bold 35px Georgia,serif;
+}
+
+.brand-name {
+  display:block;
+  font-size:27px;
+  font-weight:800;
+  letter-spacing:2px;
+  line-height:1.2;
+}
+
+.brand small {
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  font-size:10px;
+}
+
+nav {
+  display:flex;
+  flex-wrap:wrap;
+  gap:24px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+nav a:hover,
+.text-link:hover {
+  color:var(--blue);
+  text-decoration:underline;
+}
+
+.demo-bar {
+  padding-block:18px;
+  background:var(--light);
+  border-bottom:1px solid var(--line);
+}
+
+.demo-controls {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.demo-controls label { font-size:13px; font-weight:bold; }
+
+select {
+  padding:9px 12px;
+  border:1px solid #b9cbd5;
+  background:white;
+  color:var(--ink);
+}
+
+main { padding-block:30px 65px; }
+
+.breadcrumb {
+  margin-bottom:25px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.breadcrumb a:hover { color:var(--blue); text-decoration:underline; }
+
+.notice {
+  padding:15px 18px;
+  margin-bottom:28px;
+  border-inline-start:3px solid var(--blue);
+  background:#eaf2f7;
+  color:#435e70;
+  font-size:13px;
+}
+
+.layout {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 285px;
+  gap:40px;
+  align-items:start;
+}
+
+.badges { display:flex; flex-wrap:wrap; gap:8px; }
+
+.badge {
+  display:inline-block;
+  padding:4px 10px;
+  background:#edf2f5;
+  color:#516775;
+  font-size:11px;
+}
+
+.badge-open { background:#e7f4ed; color:#22634c; }
+.badge-paid { background:#f5eddd; color:#7c602d; }
+
+h1 {
+  margin:20px 0;
+  font:normal clamp(30px,3.5vw,43px)/1.3 Georgia,serif;
+}
+
+h2 {
+  margin:32px 0 15px;
+  font:normal 28px/1.3 Georgia,serif;
+}
+
+h3 { font-size:16px; }
+p { margin-top:0; }
+
+.authors {
+  margin-bottom:8px;
+  font-size:15px;
+}
+
+.affiliation,
+.meta,
+.muted {
+  color:var(--muted);
+}
+
+.affiliation,.meta { font-size:13px; }
+
+.publication-link {
+  display:inline-block;
+  margin-block:12px 20px;
+  color:var(--blue);
+  font-size:14px;
+}
+
+.publication-link:hover { text-decoration:underline; }
+
+.article-navigation {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:15px;
+  padding-block:18px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.article-navigation button {
+  padding:9px 14px;
+  color:var(--ink);
+  border:1px solid var(--line);
+  background:white;
+  font-size:13px;
+}
+
+.article-navigation button[aria-pressed="true"] {
+  color:white;
+  background:var(--blue);
+  border-color:var(--blue);
+}
+
+.keywords {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.keyword {
+  padding:5px 10px;
+  border:1px solid var(--line);
+  background:var(--light);
+  color:var(--muted);
+  font-size:12px;
+}
+
+.sidebar-box {
+  padding:24px;
+  margin-bottom:20px;
+  border:1px solid var(--line);
+}
+
+.sidebar-box h2 {
+  margin:0 0 15px;
+  font-family:Arial,Tahoma,sans-serif;
+  font-size:18px;
+}
+
+.sidebar-box p { font-size:13px; }
+
+.button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 18px;
+  border:1px solid var(--blue);
+  color:white;
+  background:var(--blue);
+  font-size:13px;
+  font-weight:bold;
+}
+
+.button.full { width:100%; }
+
+.button-outline {
+  color:var(--blue);
+  background:white;
+}
+
+.button:hover { filter:brightness(.95); }
+
+.facts { margin:0; }
+
+.facts dt {
+  margin-top:15px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.facts dd {
+  margin:3px 0 0;
+  font-size:13px;
+}
+
+.placeholder {
+  padding:23px;
+  border:1px dashed #b9cbd5;
+  background:var(--light);
+}
+
+.citation {
+  padding:18px;
+  margin-bottom:18px;
+  border:1px solid var(--line);
+  background:var(--light);
+  overflow-wrap:anywhere;
+  white-space:pre-wrap;
+  font-size:14px;
+}
+
+.feedback {
+  margin-top:14px;
+  color:var(--blue);
+  font-size:13px;
+}
+
+.text-link { color:var(--blue); font-weight:bold; font-size:14px; }
+
+footer {
+  padding-block:30px;
+  background:var(--dark);
+  color:#d1e1ea;
+  font-size:13px;
+}
+
+.footer-inner {
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+dialog {
+  width:min(520px,90%);
+  max-height:85vh;
+  overflow:auto;
+  padding:28px;
+  border:0;
+  color:var(--ink);
+  box-shadow:0 20px 80px #0004;
+}
+
+dialog::backdrop { background:#052638b8; }
+dialog h2 { margin-top:0; }
+
+.dialog-close {
+  display:block;
+  margin-inline-start:auto;
+  margin-bottom:15px;
+  padding:6px 12px;
+  background:white;
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+
+html[lang="ar"] body { line-height:1.95; }
+
+html[lang="ar"] h1,
+html[lang="ar"] h2 {
+  font-family:Tahoma,Arial,sans-serif;
+  line-height:1.5;
+}
+
+@media(max-width:850px) {
+  .header-inner { flex-wrap:wrap; }
+  nav { width:100%; gap:18px; }
+  .layout { grid-template-columns:1fr; }
+
+  aside {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+
+  .sidebar-box { margin-bottom:0; }
+}
+
+@media(max-width:600px) {
+  .utility-scope { display:none; }
+  .utility-inner { justify-content:center; }
+  aside { grid-template-columns:1fr; }
+  .demo-controls { align-items:stretch; flex-direction:column; }
+  .article-navigation button { flex-grow:1; }
+}
+</style>
+</head>
+
+<body>
+<a class="skip-link" href="#main-content" data-i18n="skip">Skip to content</a>
+
+<div class="utility">
+  <div class="container utility-inner">
+    <span class="utility-scope" data-i18n="scope">
+      Natural Sciences, Humanities, and Social Sciences
+    </span>
+
+    <div class="languages" role="group" aria-label="Language / اللغة">
+      <button type="button" data-language="en"
+              aria-pressed="true" lang="en">English</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" data-language="ar"
+              aria-pressed="false" lang="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">N</span>
+      <span>
+        <bdi class="brand-name">NHSS</bdi>
+        <small data-i18n="brand">Publishing & Discovery</small>
+      </span>
+    </a>
+
+    <nav id="main-navigation" aria-label="Main navigation">
+      <a href="index.html" data-i18n="home">Home</a>
+      <a href="publications.html" data-i18n="publications">Publications</a>
+      <a href="index.html#research-fields" data-i18n="fields">Research Fields</a>
+      <a href="index.html#authors" data-i18n="authors">For Authors</a>
+    </nav>
+  </div>
+</header>
+
+<div class="demo-bar">
+  <div class="container demo-controls">
+    <label for="sample-selector" data-i18n="sampleLabel">
+      Preview example
+    </label>
+
+    <select id="sample-selector">
+      <option value="open-journal" data-i18n="sampleOpen">
+        Journal article · Open access
+      </option>
+      <option value="paid-journal" data-i18n="samplePaid">
+        Journal article · Paid access
+      </option>
+      <option value="conference" data-i18n="sampleConference">
+        Conference paper · Open access
+      </option>
+    </select>
+  </div>
+</div>
+
+<main class="container" id="main-content">
+  <noscript>
+    <p>This demonstration requires JavaScript.
+      / تتطلب هذه النسخة التجريبية تفعيل جافاسكريبت.</p>
+  </noscript>
+
+  <div class="breadcrumb">
+    <a href="index.html" data-i18n="home">Home</a>
+    <span aria-hidden="true"> / </span>
+    <a href="publications.html" data-i18n="publications">Publications</a>
+    <span aria-hidden="true"> / </span>
+    <span data-i18n="articlePage">Article</span>
+  </div>
+
+  <div class="notice" data-i18n="notice">
+    Demonstration only. This is not a published or peer-reviewed paper.
+    Titles, authors, and publication information are illustrative.
+  </div>
+
+  <div class="layout">
+    <article>
+      <div class="badges">
+        <span class="badge" id="paper-type"></span>
+        <span class="badge" id="access-badge"></span>
+        <span class="badge" data-i18n="sampleBadge">SAMPLE CONTENT</span>
+      </div>
+
+      <h1 id="paper-title"></h1>
+      <p class="authors" id="paper-authors"></p>
+      <p class="affiliation" id="paper-affiliation"></p>
+
+      <a class="publication-link" id="publication-link"></a>
+
+      <div class="article-navigation" role="group"
+           aria-label="Article sections / أقسام المقالة">
+        <button type="button" data-panel="abstract"
+                aria-controls="abstract" aria-pressed="true"
+                data-i18n="abstract">Abstract</button>
+
+        <button type="button" data-panel="fulltext"
+                aria-controls="fulltext" aria-pressed="false"
+                data-i18n="fulltext">Full Text</button>
+
+        <button type="button" data-panel="references"
+                aria-controls="references" aria-pressed="false"
+                data-i18n="references">References</button>
+
+        <button type="button" data-panel="citation"
+                aria-controls="citation" aria-pressed="false"
+                data-i18n="citation">Cite This Paper</button>
+      </div>
+
+      <section class="panel" id="abstract" aria-labelledby="abstract-heading">
+        <h2 id="abstract-heading" data-i18n="abstract">Abstract</h2>
+        <p id="paper-abstract"></p>
+
+        <h3 data-i18n="keywords">Keywords</h3>
+        <div class="keywords" id="keywords"></div>
+
+        <h3 data-i18n="languageNoteTitle">About these translations</h3>
+        <p class="muted" data-i18n="languageNote">
+          This demonstration includes Arabic and English sample metadata.
+          For real papers, website language will not automatically translate
+          the manuscript; available translations will be identified explicitly.
+        </p>
+      </section>
+
+      <section class="panel" id="fulltext" hidden
+               aria-labelledby="fulltext-heading">
+        <h2 id="fulltext-heading" data-i18n="fulltext">Full Text</h2>
+
+        <div class="placeholder">
+          <h3 id="reading-title" style="margin-top:0"></h3>
+          <p class="muted" id="reading-description"></p>
+
+          <button class="button" type="button" id="reading-action">
+            View access information
+          </button>
+        </div>
+      </section>
+
+      <section class="panel" id="references" hidden
+               aria-labelledby="references-heading">
+        <h2 id="references-heading" data-i18n="references">References</h2>
+
+        <div class="placeholder">
+          <p class="muted" data-i18n="referencesText">
+            No references are supplied for this sample. Real article pages
+            will list the paper’s cited sources and verified links where available.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="citation" hidden
+               aria-labelledby="citation-heading">
+        <h2 id="citation-heading" data-i18n="citation">Cite This Paper</h2>
+
+        <p class="muted" data-i18n="citationNotice">
+          This is a sample citation for interface testing. Do not cite it as real research.
+        </p>
+
+        <div class="citation" id="citation-text"></div>
+
+        <button class="button" type="button" id="copy-citation"
+                data-i18n="copyCitation">Copy sample citation</button>
+
+        <p class="feedback" id="copy-status" role="status"></p>
+      </section>
+    </article>
+
+    <aside>
+      <section class="sidebar-box">
+        <h2 data-i18n="accessTitle">Paper access</h2>
+        <p id="access-description" class="muted"></p>
+
+        <button class="button full" type="button" id="access-action">
+          View access information
+        </button>
+
+        <p class="meta" style="margin-top:15px" data-i18n="noTransactions">
+          No manuscript, downloadable PDF, or payment service is connected.
+        </p>
+      </section>
+
+      <section class="sidebar-box">
+        <h2 data-i18n="information">Paper information</h2>
+
+        <dl class="facts">
+          <dt data-i18n="publicationType">Publication type</dt>
+          <dd id="publication-type"></dd>
+
+          <dt data-i18n="articleType">Article type</dt>
+          <dd id="article-type"></dd>
+
+          <dt data-i18n="subject">Subject</dt>
+          <dd id="paper-subject"></dd>
+
+          <dt data-i18n="status">Publication status</dt>
+          <dd data-i18n="notPublished">Demonstration · Not published</dd>
+
+          <dt>DOI</dt>
+          <dd data-i18n="notAssigned">Not assigned</dd>
+
+          <dt data-i18n="dates">Submission and publication dates</dt>
+          <dd data-i18n="notApplicable">Not applicable to sample content</dd>
+        </dl>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>
+      © <span id="year"></span> <bdi>NHSS</bdi>
+      <span data-i18n="copyright">Publishing. All rights reserved.</span>
+    </span>
+
+    <a class="footer-link" href="publications.html"
+       data-i18n="back">Return to publications</a>
+  </div>
+</footer>
+
+<dialog id="access-dialog" aria-labelledby="dialog-heading">
+  <button class="dialog-close" id="close-dialog" type="button"
+          data-i18n="close">Close</button>
+
+  <h2 id="dialog-heading"></h2>
+  <p id="dialog-description"></p>
+
+  <div class="notice" data-i18n="dialogNotice">
+    Demonstration only. No files are downloaded and no money is collected.
+  </div>
+</dialog>
+
+<script>
+const translations = {
+  en: {
+    skip: "Skip to content",
+    scope: "Natural Sciences, Humanities, and Social Sciences",
+    brand: "Publishing & Discovery",
+    home: "Home",
+    publications: "Publications",
+    fields: "Research Fields",
+    authors: "For Authors",
+    sampleLabel: "Preview example",
+    sampleOpen: "Journal article · Open access",
+    samplePaid: "Journal article · Paid access",
+    sampleConference: "Conference paper · Open access",
+    articlePage: "Article",
+    notice: "Demonstration only. This is not a published or peer-reviewed paper. Titles, authors, and publication information are illustrative.",
+    sampleBadge: "SAMPLE CONTENT",
+    abstract: "Abstract",
+    fulltext: "Full Text",
+    references: "References",
+    citation: "Cite This Paper",
+    keywords: "Keywords",
+    languageNoteTitle: "About these translations",
+    languageNote: "This demonstration includes Arabic and English sample metadata. For real papers, website language will not automatically translate the manuscript; available translations will be identified explicitly.",
+    referencesText: "No references are supplied for this sample. Real article pages will list the paper’s cited sources and verified links where available.",
+    citationNotice: "This is a sample citation for interface testing. Do not cite it as real research.",
+    copyCitation: "Copy sample citation",
+    copied: "Sample citation copied.",
+    copyFailed: "Automatic copying is unavailable. Select and copy the citation text above.",
+    accessTitle: "Paper access",
+    noTransactions: "No manuscript, downloadable PDF, or payment service is connected.",
+    information: "Paper information",
+    publicationType: "Publication type",
+    articleType: "Article type",
+    subject: "Subject",
+    status: "Publication status",
+    notPublished: "Demonstration · Not published",
+    notAssigned: "Not assigned",
+    dates: "Submission and publication dates",
+    notApplicable: "Not applicable to sample content",
+    copyright: "Publishing. All rights reserved.",
+    back: "Return to publications",
+    close: "Close",
+    dialogNotice: "Demonstration only. No files are downloaded and no money is collected.",
+    openAccess: "Open access",
+    paidAccess: "Paid access",
+    journalArticle: "Journal article",
+    conferencePaper: "Conference paper",
+    researchArticle: "Original Research Article",
+    natural: "Natural Sciences",
+    openDescription: "This example represents an article that readers could access without purchase.",
+    paidDescription: "This example represents an article requiring a purchase or an eligible subscription.",
+    openAction: "View sample access information",
+    paidAction: "View purchase options",
+    openReadingTitle: "Open-access reading preview",
+    openReadingText: "The full manuscript would appear here once a real paper is published. This sample contains no research results or PDF.",
+    paidReadingTitle: "Full text requires access",
+    paidReadingText: "In the completed platform, reader access would be verified before the protected manuscript is provided.",
+    openDialogTitle: "Open-access example",
+    openDialogText: "A real open-access article would provide its full text and PDF under a stated license. No document is attached to this sample.",
+    paidDialogTitle: "Paid-access example",
+    paidDialogText: "A real paid article could be accessed through an individual purchase or subscription. Pricing, checkout, and access verification are not enabled.",
+    sampleAuthor: "Demonstration author",
+    sampleAffiliation: "Sample affiliation — no real author or institution is represented.",
+    sampleCitation: "SAMPLE ONLY — not published.",
+    navLabel: "Main navigation"
+  },
+
+  ar: {
+    skip: "انتقل إلى المحتوى",
+    scope: "العلوم الطبيعية والإنسانية والاجتماعية",
+    brand: "النشر العلمي والاكتشاف",
+    home: "الرئيسية",
+    publications: "المنشورات",
+    fields: "المجالات البحثية",
+    authors: "للمؤلفين",
+    sampleLabel: "اختر المثال التجريبي",
+    sampleOpen: "مقالة مجلة · وصول مفتوح",
+    samplePaid: "مقالة مجلة · وصول مدفوع",
+    sampleConference: "ورقة مؤتمر · وصول مفتوح",
+    articlePage: "المقالة",
+    notice: "عرض تجريبي فقط. هذه ليست ورقة منشورة أو محكّمة. العناوين والمؤلفون ومعلومات النشر أمثلة توضيحية.",
+    sampleBadge: "محتوى تجريبي",
+    abstract: "الملخص",
+    fulltext: "النص الكامل",
+    references: "المراجع",
+    citation: "الاستشهاد بالورقة",
+    keywords: "الكلمات المفتاحية",
+    languageNoteTitle: "حول هذه الترجمات",
+    languageNote: "يتضمن هذا العرض بيانات تجريبية بالعربية والإنجليزية. أما الأوراق الفعلية فلن تُترجم تلقائيًا بتغيير لغة الموقع، وستُحدّد الترجمات المتاحة بوضوح.",
+    referencesText: "لا توجد مراجع لهذا المثال. ستعرض صفحات المقالات الفعلية المصادر التي استشهدت بها الورقة وروابطها المتحقق منها عند توفرها.",
+    citationNotice: "هذا استشهاد تجريبي لاختبار الواجهة. لا تستخدمه بوصفه بحثًا حقيقيًا.",
+    copyCitation: "نسخ الاستشهاد التجريبي",
+    copied: "نُسخ الاستشهاد التجريبي.",
+    copyFailed: "النسخ التلقائي غير متاح. حدّد نص الاستشهاد أعلاه وانسخه.",
+    accessTitle: "الوصول إلى الورقة",
+    noTransactions: "لا توجد مخطوطة أو نسخة PDF قابلة للتنزيل أو خدمة دفع مرتبطة بهذه الصفحة.",
+    information: "معلومات الورقة",
+    publicationType: "نوع المنشور",
+    articleType: "نوع المقالة",
+    subject: "المجال",
+    status: "حالة النشر",
+    notPublished: "مثال تجريبي · غير منشور",
+    notAssigned: "لم يُخصّص",
+    dates: "تواريخ التقديم والنشر",
+    notApplicable: "لا تنطبق على المحتوى التجريبي",
+    copyright: "للنشر العلمي. جميع الحقوق محفوظة.",
+    back: "العودة إلى المنشورات",
+    close: "إغلاق",
+    dialogNotice: "عرض تجريبي فقط. لا تُنزّل ملفات ولا تُحصّل أي مبالغ.",
+    openAccess: "وصول مفتوح",
+    paidAccess: "وصول مدفوع",
+    journalArticle: "مقالة مجلة",
+    conferencePaper: "ورقة مؤتمر",
+    researchArticle: "بحث أصيل",
+    natural: "العلوم الطبيعية",
+    openDescription: "يمثل هذا المثال مقالة يمكن للقرّاء الوصول إليها دون شراء.",
+    paidDescription: "يمثل هذا المثال مقالة تتطلب الشراء أو اشتراكًا يتيح الوصول.",
+    openAction: "عرض معلومات الوصول التجريبية",
+    paidAction: "عرض خيارات الشراء",
+    openReadingTitle: "معاينة القراءة بنظام الوصول المفتوح",
+    openReadingText: "سيظهر النص الكامل هنا عند نشر ورقة فعلية. لا يحتوي هذا المثال على نتائج بحثية أو ملف PDF.",
+    paidReadingTitle: "النص الكامل يتطلب صلاحية وصول",
+    paidReadingText: "في المنصة المكتملة ستُتحقق صلاحية القارئ قبل إتاحة المخطوطة المحمية.",
+    openDialogTitle: "مثال الوصول المفتوح",
+    openDialogText: "ستتيح المقالة الفعلية ذات الوصول المفتوح نصها الكامل وملف PDF وفق ترخيص معلن. لا يوجد مستند مرفق بهذا المثال.",
+    paidDialogTitle: "مثال الوصول المدفوع",
+    paidDialogText: "قد تتاح المقالة المدفوعة بالشراء المنفرد أو الاشتراك. لم تُفعّل الأسعار أو خدمة الدفع أو التحقق من صلاحية الوصول.",
+    sampleAuthor: "مؤلف تجريبي",
+    sampleAffiliation: "انتماء تجريبي — لا يمثل مؤلفًا أو مؤسسة حقيقية.",
+    sampleCitation: "مثال فقط — غير منشور.",
+    navLabel: "التنقل الرئيسي"
+  }
+};
+
+const samples = {
+  "open-journal": {
+    access: "open",
+    venue: "journal",
+    en: {
+      title: "Light and matter: a demonstration research article",
+      venueTitle: "NHSS Journal of Natural Sciences",
+      abstract: "This sample illustrates how an original research article would be displayed on NHSS Publishing. A real abstract would summarize the research question, methods, principal findings, and limitations. No study or scientific finding is claimed by this demonstration.",
+      keywords: ["Optics", "Natural sciences", "Demonstration"]
+    },
+    ar: {
+      title: "الضوء والمادة: مقالة بحثية تجريبية",
+      venueTitle: "مجلة NHSS للعلوم الطبيعية",
+      abstract: "يوضح هذا المثال كيفية عرض بحث أصيل على منصة NHSS للنشر العلمي. سيُلخّص الملخص الفعلي السؤال البحثي والمنهجية والنتائج الرئيسية وحدود الدراسة. ولا يمثل هذا العرض دراسة أو نتيجة علمية حقيقية.",
+      keywords: ["البصريات", "العلوم الطبيعية", "مثال تجريبي"]
+    }
+  },
+
+  "paid-journal": {
+    access: "paid",
+    venue: "journal",
+    en: {
+      title: "Environmental measurement: a paid-access article demonstration",
+      venueTitle: "NHSS Journal of Natural Sciences",
+      abstract: "This sample demonstrates the public information page for an article with paid full-text access. Its abstract and bibliographic details remain visible, while a completed publishing system would verify access before delivering the manuscript. This is not an actual research paper.",
+      keywords: ["Environmental sciences", "Measurement", "Demonstration"]
+    },
+    ar: {
+      title: "القياس البيئي: مثال لمقالة ذات وصول مدفوع",
+      venueTitle: "مجلة NHSS للعلوم الطبيعية",
+      abstract: "يوضح هذا المثال صفحة المعلومات العامة لمقالة يتطلب نصها الكامل وصولًا مدفوعًا. يظل الملخص والبيانات التعريفية ظاهرين، بينما تتحقق المنصة المكتملة من صلاحية الوصول قبل إتاحة المخطوطة. هذه ليست ورقة بحثية فعلية.",
+      keywords: ["العلوم البيئية", "القياس", "مثال تجريبي"]
+    }
+  },
+
+  "conference": {
+    access: "open",
+    venue: "conference",
+    en: {
+      title: "Connecting scientific ideas: a demonstration conference paper",
+      venueTitle: "Natural Sciences Conference Proceedings",
+      abstract: "This example shows how a conference paper could be presented within the NHSS library. A real page would identify the specific conference edition, its proceedings, and the paper’s verified publication information. No actual conference or published contribution is represented.",
+      keywords: ["Conference paper", "Natural sciences", "Demonstration"]
+    },
+    ar: {
+      title: "ربط الأفكار العلمية: ورقة مؤتمر تجريبية",
+      venueTitle: "وقائع مؤتمرات العلوم الطبيعية",
+      abstract: "يوضح هذا المثال كيفية عرض ورقة مؤتمر ضمن مكتبة NHSS. ستحدد الصفحة الفعلية دورة المؤتمر ووقائعه ومعلومات النشر المتحقق منها. ولا يمثل هذا المثال مؤتمرًا فعليًا أو مساهمة منشورة.",
+      keywords: ["ورقة مؤتمر", "العلوم الطبيعية", "مثال تجريبي"]
+    }
+  }
+};
+
+let language = "en";
+let selectedSample = "open-journal";
+let currentPanel = "abstract";
+
+const selector = document.querySelector("#sample-selector");
+const dialog = document.querySelector("#access-dialog");
+
+function setText(id, text) {
+  document.getElementById(id).textContent = text;
+}
+
+function getCitation() {
+  const t = translations[language];
+  const content = samples[selectedSample][language];
+
+  return t.sampleAuthor + ". " + content.title + ". " +
+    content.venueTitle + ". " + t.sampleCitation;
+}
+
+function renderArticle() {
+  const sample = samples[selectedSample];
+  const content = sample[language];
+  const t = translations[language];
+  const isOpen = sample.access === "open";
+  const isJournal = sample.venue === "journal";
+
+  setText("paper-title", content.title);
+  setText("paper-authors", t.sampleAuthor);
+  setText("paper-affiliation", t.sampleAffiliation);
+  setText("paper-abstract", content.abstract);
+
+  setText("paper-type", isJournal ? t.journalArticle : t.conferencePaper);
+  setText("publication-type", isJournal ? t.journalArticle : t.conferencePaper);
+  setText("article-type", isJournal ? t.researchArticle : t.conferencePaper);
+  setText("paper-subject", t.natural);
+
+  const accessBadge = document.querySelector("#access-badge");
+  accessBadge.textContent = isOpen ? t.openAccess : t.paidAccess;
+  accessBadge.className = "badge " + (isOpen ? "badge-open" : "badge-paid");
+
+  const venueLink = document.querySelector("#publication-link");
+  venueLink.textContent = content.venueTitle;
+  venueLink.href = isJournal
+    ? "journal.html?subject=natural"
+    : "conference.html?subject=natural";
+
+  setText("access-description", isOpen ? t.openDescription : t.paidDescription);
+  setText("access-action", isOpen ? t.openAction : t.paidAction);
+  setText("reading-action", isOpen ? t.openAction : t.paidAction);
+  setText("reading-title", isOpen ? t.openReadingTitle : t.paidReadingTitle);
+  setText("reading-description", isOpen ? t.openReadingText : t.paidReadingText);
+  setText("dialog-heading", isOpen ? t.openDialogTitle : t.paidDialogTitle);
+  setText("dialog-description", isOpen ? t.openDialogText : t.paidDialogText);
+
+  const keywordList = document.querySelector("#keywords");
+  keywordList.replaceChildren();
+
+  content.keywords.forEach(function(word) {
+    const keyword = document.createElement("span");
+    keyword.className = "keyword";
+    keyword.textContent = word;
+    keywordList.append(keyword);
+  });
+
+  setText("citation-text", getCitation());
+  setText("copy-status", "");
+
+  document.title = content.title + (
+    language === "ar" ? " | NHSS للنشر العلمي" : " | NHSS Publishing"
+  );
+
+  document.querySelector('meta[name="description"]').content = content.abstract;
+}
+
+function setPanel(name) {
+  const valid = ["abstract", "fulltext", "references", "citation"];
+  currentPanel = valid.includes(name) ? name : "abstract";
+
+  document.querySelectorAll(".panel").forEach(function(panel) {
+    panel.hidden = panel.id !== currentPanel;
+  });
+
+  document.querySelectorAll("[data-panel]").forEach(function(button) {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.panel === currentPanel)
+    );
+  });
+}
+
+function setLanguage(value) {
+  language = value === "ar" ? "ar" : "en";
+  const t = translations[language];
+
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-i18n]").forEach(function(element) {
+    element.textContent = t[element.dataset.i18n];
+  });
+
+  document.querySelectorAll("[data-language]").forEach(function(button) {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.language === language)
+    );
+  });
+
+  document.querySelector("#main-navigation")
+    .setAttribute("aria-label", t.navLabel);
+
+  renderArticle();
+
+  try {
+    localStorage.setItem("nhss-language", language);
+  } catch (error) {
+    // Language switching works without browser storage.
+  }
+}
+
+function openAccessDialog() {
+  if (!dialog.open) dialog.showModal();
+}
+
+document.querySelectorAll("[data-language]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setLanguage(button.dataset.language);
+  });
+});
+
+document.querySelectorAll("[data-panel]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setPanel(button.dataset.panel);
+  });
+});
+
+selector.addEventListener("change", function() {
+  selectedSample = selector.value;
+  setPanel("abstract");
+  renderArticle();
+});
+
+document.querySelector("#access-action")
+  .addEventListener("click", openAccessDialog);
+
+document.querySelector("#reading-action")
+  .addEventListener("click", openAccessDialog);
+
+document.querySelector("#close-dialog").addEventListener("click", function() {
+  dialog.close();
+});
+
+document.querySelector("#copy-citation").addEventListener("click", async function() {
+  const t = translations[language];
+
+  try {
+    await navigator.clipboard.writeText(getCitation());
+    setText("copy-status", t.copied);
+  } catch (error) {
+    setText("copy-status", t.copyFailed);
+  }
+});
+
+document.querySelector("#year").textContent = new Date().getFullYear();
+
+try {
+  language = localStorage.getItem("nhss-language") || "en";
+} catch (error) {
+  language = "en";
+}
+
+setLanguage(language);
+setPanel("abstract");
+</script>
+</body>
+</html>
