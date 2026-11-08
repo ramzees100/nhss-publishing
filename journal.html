@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Proposed NHSS Journal of Natural Sciences.">
-<title>Journal of Natural Sciences | NHSS Publishing</title>
+<meta name="description" content="Explore a proposed NHSS scholarly journal.">
+<title>Journal | NHSS Publishing</title>
 
 <style>
 :root {
@@ -41,6 +40,17 @@ button:focus-visible {
   width: min(1180px, 90%);
   margin-inline: auto;
 }
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  inset-inline-start: 12px;
+  z-index: 10;
+  padding: 10px 16px;
+  background: white;
+}
+
+.skip-link:focus { top: 12px; }
 
 .utility {
   background: var(--dark);
@@ -159,7 +169,13 @@ nav a:hover,
   padding: 22px;
   border: 1px solid #86aabd;
   background:
-    linear-gradient(140deg, transparent 45%, #ffffff12 45%, #ffffff12 47%, transparent 47%),
+    linear-gradient(
+      140deg,
+      transparent 45%,
+      #ffffff12 45%,
+      #ffffff12 47%,
+      transparent 47%
+    ),
     #0d4964;
 }
 
@@ -172,6 +188,7 @@ nav a:hover,
 .cover-title {
   font: normal 23px/1.4 Georgia, serif;
   color: #d8eee9;
+  overflow-wrap: anywhere;
 }
 
 .cover-label {
@@ -271,7 +288,7 @@ main { padding-block: 35px 65px; }
   color: white;
 }
 
-.panel[hidden] { display: none; }
+[hidden] { display: none !important; }
 
 h2 {
   margin: 0 0 18px;
@@ -284,7 +301,6 @@ h3 {
 }
 
 p { margin-top: 0; }
-
 .muted { color: var(--muted); }
 
 .scope-grid {
@@ -366,6 +382,8 @@ p { margin-top: 0; }
   background: var(--light);
 }
 
+.policy-block h3 { margin-top: 0; }
+
 .text-link {
   color: var(--blue);
   font-size: 14px;
@@ -413,7 +431,7 @@ html[lang="ar"] .cover-title {
   .utility-scope { display: none; }
   .utility-inner { justify-content: center; }
   .hero-layout { grid-template-columns: 1fr; gap: 25px; }
-  .journal-cover { max-width: 170px; min-height: 210px; }
+  .journal-cover { max-width: 180px; min-height: 210px; }
   .scope-grid, aside { grid-template-columns: 1fr; }
   .section-navigation button { flex-grow: 1; }
 }
@@ -421,6 +439,10 @@ html[lang="ar"] .cover-title {
 </head>
 
 <body>
+<a class="skip-link" href="#main-content" data-i18n="skip">
+  Skip to content
+</a>
+
 <div class="utility">
   <div class="container utility-inner">
     <span class="utility-scope" data-i18n="scope">
@@ -464,25 +486,23 @@ html[lang="ar"] .cover-title {
       <span aria-hidden="true"> / </span>
       <a href="publications.html" data-i18n="publications">Publications</a>
       <span aria-hidden="true"> / </span>
-      <span data-i18n="natural">Natural Sciences</span>
+      <span data-journal="subject"></span>
     </div>
 
     <div class="hero-layout">
       <div class="journal-cover" aria-hidden="true">
         <bdi class="cover-brand">NHSS</bdi>
-        <div class="cover-title" data-i18n="natural">Natural Sciences</div>
+        <div class="cover-title" data-journal="subject"></div>
         <div class="cover-label" data-i18n="coverLabel">PROPOSED JOURNAL</div>
       </div>
 
       <div>
-        <span class="status" data-i18n="status">Proposed journal · In development</span>
+        <span class="status" data-i18n="status">
+          Proposed journal · In development
+        </span>
 
-        <h1 data-i18n="journalTitle">NHSS Journal of Natural Sciences</h1>
-
-        <p class="hero-description" data-i18n="journalDescription">
-          A proposed scholarly journal for research in physics, chemistry,
-          biology, and earth and environmental sciences.
-        </p>
+        <h1 data-journal="title">NHSS Journal</h1>
+        <p class="hero-description" data-journal="description"></p>
 
         <div class="hero-actions">
           <button class="button button-light" type="button"
@@ -500,7 +520,12 @@ html[lang="ar"] .cover-title {
   </div>
 </section>
 
-<main class="container">
+<main class="container" id="main-content">
+  <noscript>
+    <p>This page requires JavaScript to display journal information.
+      / تتطلب هذه الصفحة تفعيل جافاسكريبت لعرض معلومات المجلة.</p>
+  </noscript>
+
   <div class="notice" data-i18n="notice">
     This is a proposed journal page. Submissions are closed, no editorial
     board has been appointed, and no articles or issues have been published.
@@ -529,70 +554,15 @@ html[lang="ar"] .cover-title {
 
       <section class="panel" id="overview" aria-labelledby="overview-heading">
         <h2 id="overview-heading" data-i18n="aimsTitle">Aims and scope</h2>
+        <p class="muted" data-journal="aims"></p>
 
-        <p class="muted" data-i18n="aimsText">
-          The proposed journal will provide a home for original research
-          and critical synthesis within the natural sciences. Its final
-          scope and publication policies will be established by its
-          editorial leadership before launch.
-        </p>
-
-        <div class="scope-grid">
-          <article class="scope-item">
-            <strong data-i18n="physics">Physics and astronomy</strong>
-            <p data-i18n="physicsText">
-              Physical phenomena, matter, energy, optics, and astronomical research.
-            </p>
-          </article>
-
-          <article class="scope-item">
-            <strong data-i18n="chemistry">Chemistry</strong>
-            <p data-i18n="chemistryText">
-              Chemical systems, materials, reactions, and analytical methods.
-            </p>
-          </article>
-
-          <article class="scope-item">
-            <strong data-i18n="biology">Biology and life sciences</strong>
-            <p data-i18n="biologyText">
-              Living systems, biological processes, ecology, and related research.
-            </p>
-          </article>
-
-          <article class="scope-item">
-            <strong data-i18n="earth">Earth and environmental sciences</strong>
-            <p data-i18n="earthText">
-              Earth systems, environmental processes, and natural resources.
-            </p>
-          </article>
-        </div>
+        <div class="scope-grid" id="scope-grid"></div>
 
         <h3 data-i18n="typesTitle">Proposed article types</h3>
-
-        <div class="article-type">
-          <strong data-i18n="researchTitle">Original Research Article</strong>
-          <p data-i18n="researchText">
-            New findings supported by a clear research question,
-            appropriate methods, and evidence.
-          </p>
-        </div>
-
-        <div class="article-type">
-          <strong data-i18n="reviewTitle">Review Article</strong>
-          <p data-i18n="reviewText">
-            Critical synthesis of existing research on a defined topic.
-          </p>
-        </div>
-
-        <div class="article-type">
-          <strong data-i18n="shortTitle">Short Communication</strong>
-          <p data-i18n="shortText">
-            A focused research contribution presented in a shorter format.
-          </p>
-        </div>
+        <div id="article-types"></div>
 
         <div class="policy-block">
-          <h3 style="margin-top:0" data-i18n="accessTitle">Access and publication fees</h3>
+          <h3 data-i18n="accessTitle">Access and publication fees</h3>
           <p class="muted" data-i18n="accessText">
             The journal’s access model, licensing terms, and any author
             charges have not yet been decided. These will be published
@@ -632,34 +602,15 @@ html[lang="ar"] .cover-title {
         <h2 id="guidelines-heading" data-i18n="guidelines">Author Guidelines</h2>
 
         <p class="muted" data-i18n="guidelinesIntro">
-          The following is a preliminary preparation checklist, not final
-          submission instructions. Templates, length limits, review policies,
-          and submission requirements will be confirmed before launch.
+          This is a preliminary preparation checklist, not final submission
+          instructions. Each journal will establish its own requirements
+          before launch.
         </p>
 
-        <ul class="checklist">
-          <li data-i18n="check1">
-            Provide a clear title, author information, abstract, and keywords.
-          </li>
-          <li data-i18n="check2">
-            Explain the research question, methods, results, and limitations.
-          </li>
-          <li data-i18n="check3">
-            Cite relevant sources and identify reused material.
-          </li>
-          <li data-i18n="check4">
-            Include funding, authorship, and conflict-of-interest disclosures.
-          </li>
-          <li data-i18n="check5">
-            Provide applicable research ethics approvals and consent information.
-          </li>
-          <li data-i18n="check6">
-            Describe the availability of supporting data and code where relevant.
-          </li>
-        </ul>
+        <ul class="checklist" id="journal-checklist"></ul>
 
         <div class="policy-block">
-          <h3 style="margin-top:0" data-i18n="languageTitle">Manuscript languages</h3>
+          <h3 data-i18n="languageTitle">Manuscript languages</h3>
           <p class="muted" data-i18n="languageText">
             The website supports Arabic and English. Accepted manuscript
             languages and translation requirements will be established
@@ -679,8 +630,8 @@ html[lang="ar"] .cover-title {
         <div class="empty-state">
           <h3 data-i18n="issuesEmptyTitle">No published issues yet.</h3>
           <p class="muted" data-i18n="issuesEmptyText">
-            Published volumes, issues, and articles will appear here
-            after the journal launches. No publication dates have been set.
+            Published volumes, issues, and articles will appear here after
+            the journal launches. No publication dates have been set.
           </p>
 
           <a class="text-link" href="publications.html"
@@ -698,7 +649,7 @@ html[lang="ar"] .cover-title {
           <dd><bdi>NHSS</bdi> <span data-i18n="publisherName">Publishing</span></dd>
 
           <dt data-i18n="subjectLabel">Subject area</dt>
-          <dd data-i18n="natural">Natural Sciences</dd>
+          <dd data-journal="subject"></dd>
 
           <dt data-i18n="statusLabel">Publication status</dt>
           <dd data-i18n="notLaunched">Not yet launched</dd>
@@ -716,12 +667,10 @@ html[lang="ar"] .cover-title {
 
       <section class="sidebar-box">
         <h2 data-i18n="integrityTitle">Editorial integrity</h2>
-
         <p class="muted" data-i18n="integrityText">
           Review procedures, editorial independence, corrections, and
           research ethics policies must be established before launch.
         </p>
-
         <a class="text-link" href="index.html#about"
            data-i18n="aboutLink">About NHSS Publishing</a>
       </section>
@@ -749,6 +698,7 @@ document.querySelectorAll("[data-i18n]").forEach(function(element) {
 });
 
 const arabic = {
+  skip: "انتقل إلى المحتوى",
   scope: "العلوم الطبيعية والإنسانية والاجتماعية",
   brand: "النشر العلمي والاكتشاف",
   home: "الرئيسية",
@@ -756,12 +706,8 @@ const arabic = {
   fields: "المجالات البحثية",
   authors: "للمؤلفين",
   about: "عن NHSS",
-  natural: "العلوم الطبيعية",
   coverLabel: "مجلة مقترحة",
   status: "مجلة مقترحة · قيد التطوير",
-  journalTitle: "مجلة NHSS للعلوم الطبيعية",
-  journalDescription:
-    "مجلة علمية مقترحة للبحوث في الفيزياء والكيمياء والأحياء وعلوم الأرض والبيئة.",
   authorButton: "معلومات المؤلفين",
   issuesButton: "تصفّح الأعداد",
   notice:
@@ -771,36 +717,10 @@ const arabic = {
   guidelines: "إرشادات المؤلفين",
   issues: "الأعداد والمقالات",
   aimsTitle: "الأهداف والنطاق",
-  aimsText:
-    "تهدف المجلة المقترحة إلى توفير مساحة للبحوث الأصيلة والمراجعات النقدية في العلوم الطبيعية. وستحدد قيادتها التحريرية نطاقها النهائي وسياسات النشر قبل الإطلاق.",
-
-  physics: "الفيزياء وعلم الفلك",
-  physicsText:
-    "الظواهر الفيزيائية والمادة والطاقة والبصريات والبحوث الفلكية.",
-  chemistry: "الكيمياء",
-  chemistryText:
-    "الأنظمة الكيميائية والمواد والتفاعلات وطرائق التحليل.",
-  biology: "الأحياء وعلوم الحياة",
-  biologyText:
-    "الأنظمة الحية والعمليات الحيوية وعلم البيئة والبحوث المرتبطة بها.",
-  earth: "علوم الأرض والبيئة",
-  earthText:
-    "أنظمة الأرض والعمليات البيئية والموارد الطبيعية.",
-
   typesTitle: "أنواع المقالات المقترحة",
-  researchTitle: "بحث أصيل",
-  researchText:
-    "نتائج جديدة تستند إلى سؤال بحثي واضح ومنهجية مناسبة وأدلة داعمة.",
-  reviewTitle: "مقالة مراجعة علمية",
-  reviewText:
-    "تحليل نقدي يجمع البحوث المنشورة حول موضوع محدد.",
-  shortTitle: "بحث قصير",
-  shortText:
-    "مساهمة بحثية مركّزة تُعرض بصيغة مختصرة.",
   accessTitle: "الوصول ورسوم النشر",
   accessText:
     "لم يُحدّد نموذج الوصول أو شروط الترخيص أو أي رسوم على المؤلفين بعد. وستُنشر هذه التفاصيل قبل فتح استقبال البحوث.",
-
   boardStatus: "يجري العمل على تطوير القيادة التحريرية.",
   boardText:
     "لم يُعيّن رئيس تحرير أو محررون مشاركون أو أعضاء هيئة تحرير لهذه المجلة المقترحة.",
@@ -809,34 +729,18 @@ const arabic = {
     "أسماء المحررين وتخصصاتهم وانتماءاتهم المؤسسية بعد التحقق منها.",
   boardPlan2:
     "المسؤوليات التحريرية وسياسات تضارب المصالح.",
-  boardPlan3:
-    "بيانات الاتصال الرسمية لهيئة التحرير.",
-
+  boardPlan3: "بيانات الاتصال الرسمية لهيئة التحرير.",
   guidelinesIntro:
-    "القائمة التالية إرشادات أولية للإعداد، وليست تعليمات نهائية للتقديم. وستُعتمد القوالب وحدود الطول وسياسات التحكيم ومتطلبات التقديم قبل الإطلاق.",
-  check1:
-    "تقديم عنوان واضح وبيانات المؤلفين وملخص وكلمات مفتاحية.",
-  check2:
-    "توضيح السؤال البحثي والمنهجية والنتائج وحدود الدراسة.",
-  check3:
-    "توثيق المصادر ذات الصلة وتحديد المواد المعاد استخدامها.",
-  check4:
-    "إرفاق إفصاحات التمويل والتأليف وتضارب المصالح.",
-  check5:
-    "توفير موافقات أخلاقيات البحث ومعلومات الموافقة المستنيرة عند انطباقها.",
-  check6:
-    "توضيح مدى إتاحة البيانات والشيفرات الداعمة عند الاقتضاء.",
+    "هذه قائمة أولية للإعداد وليست تعليمات نهائية للتقديم. وستحدد كل مجلة متطلباتها الخاصة قبل الإطلاق.",
   languageTitle: "لغات المخطوطات",
   languageText:
     "يدعم الموقع العربية والإنجليزية. أما لغات المخطوطات المقبولة ومتطلبات الترجمة فستُحدّد بصورة مستقلة في إرشادات المؤلفين النهائية.",
   submissionStatus:
     "لم يُفتح استقبال البحوث. لا ترسل مخطوطات أو مدفوعات عبر هذا الموقع التجريبي.",
-
   issuesEmptyTitle: "لا توجد أعداد منشورة بعد.",
   issuesEmptyText:
     "ستظهر المجلدات والأعداد والمقالات هنا بعد إطلاق المجلة. ولم تُحدّد مواعيد النشر بعد.",
   backCollections: "العودة إلى جميع المجموعات",
-
   factsTitle: "معلومات المجلة",
   publisherLabel: "الناشر",
   publisherName: "للنشر العلمي",
@@ -855,8 +759,289 @@ const arabic = {
   copyright: "للنشر العلمي. جميع الحقوق محفوظة."
 };
 
+const journals = {
+  natural: {
+    en: {
+      subject: "Natural Sciences",
+      title: "NHSS Journal of Natural Sciences",
+      description:
+        "A proposed scholarly journal for physics, chemistry, biology, and earth and environmental sciences.",
+      aims:
+        "The proposed journal will support original research and critical synthesis in the natural sciences. Its editorial leadership will establish the final scope and publication policies before launch.",
+      disciplines: [
+        ["Physics and astronomy",
+         "Matter, energy, optics, physical phenomena, and astronomical research."],
+        ["Chemistry",
+         "Chemical systems, materials, reactions, and analytical methods."],
+        ["Biology and life sciences",
+         "Living systems, biological processes, and ecology."],
+        ["Earth and environmental sciences",
+         "Earth systems, environmental processes, and natural resources."]
+      ],
+      types: [
+        ["Original Research Article",
+         "New findings supported by appropriate methods and evidence."],
+        ["Review Article",
+         "Critical synthesis of existing research on a defined topic."],
+        ["Short Communication",
+         "A focused research contribution presented in a shorter format."]
+      ],
+      checklist: [
+        "Provide a clear title, author information, abstract, and keywords.",
+        "Explain the research question, methods, results, and limitations.",
+        "Cite relevant sources and identify reused material.",
+        "Include funding, authorship, and conflict-of-interest disclosures.",
+        "Provide applicable research ethics approvals and consent information.",
+        "Describe the availability of supporting data and code where relevant."
+      ]
+    },
+    ar: {
+      subject: "العلوم الطبيعية",
+      title: "مجلة NHSS للعلوم الطبيعية",
+      description:
+        "مجلة علمية مقترحة للفيزياء والكيمياء والأحياء وعلوم الأرض والبيئة.",
+      aims:
+        "تهدف المجلة المقترحة إلى دعم البحوث الأصيلة والمراجعات النقدية في العلوم الطبيعية. وستحدد قيادتها التحريرية نطاقها النهائي وسياسات النشر قبل الإطلاق.",
+      disciplines: [
+        ["الفيزياء وعلم الفلك",
+         "المادة والطاقة والبصريات والظواهر الفيزيائية والبحوث الفلكية."],
+        ["الكيمياء",
+         "الأنظمة الكيميائية والمواد والتفاعلات وطرائق التحليل."],
+        ["الأحياء وعلوم الحياة",
+         "الأنظمة الحية والعمليات الحيوية وعلم البيئة."],
+        ["علوم الأرض والبيئة",
+         "أنظمة الأرض والعمليات البيئية والموارد الطبيعية."]
+      ],
+      types: [
+        ["بحث أصيل",
+         "نتائج جديدة تستند إلى منهجية مناسبة وأدلة داعمة."],
+        ["مقالة مراجعة علمية",
+         "تحليل نقدي يجمع البحوث المنشورة حول موضوع محدد."],
+        ["بحث قصير",
+         "مساهمة بحثية مركّزة تُعرض بصيغة مختصرة."]
+      ],
+      checklist: [
+        "تقديم عنوان واضح وبيانات المؤلفين وملخص وكلمات مفتاحية.",
+        "توضيح السؤال البحثي والمنهجية والنتائج وحدود الدراسة.",
+        "توثيق المصادر ذات الصلة وتحديد المواد المعاد استخدامها.",
+        "إرفاق إفصاحات التمويل والتأليف وتضارب المصالح.",
+        "توفير موافقات أخلاقيات البحث ومعلومات الموافقة المستنيرة عند انطباقها.",
+        "توضيح مدى إتاحة البيانات والشيفرات الداعمة عند الاقتضاء."
+      ]
+    }
+  },
+
+  humanities: {
+    en: {
+      subject: "Humanities",
+      title: "NHSS Journal of Humanities",
+      description:
+        "A proposed scholarly journal for history, languages, literature, philosophy, arts, and cultural studies.",
+      aims:
+        "The proposed journal will support original interpretation, critical inquiry, and scholarly debate in the humanities. Its editorial leadership will establish the final scope and publication policies before launch.",
+      disciplines: [
+        ["History and archaeology",
+         "Historical interpretation, primary sources, material culture, and archaeology."],
+        ["Languages and literature",
+         "Language, literary analysis, textual studies, and comparative scholarship."],
+        ["Philosophy",
+         "Philosophical arguments, ethics, epistemology, and intellectual traditions."],
+        ["Arts and cultural studies",
+         "Artistic expression, cultural practices, heritage, and critical interpretation."]
+      ],
+      types: [
+        ["Original Research Article",
+         "An original scholarly argument or interpretation supported by sources."],
+        ["Review Article",
+         "Critical synthesis of scholarship on a defined question or topic."],
+        ["Book Review",
+         "A critical assessment of a scholarly book and its contribution."]
+      ],
+      checklist: [
+        "Provide a clear title, author information, abstract, and keywords.",
+        "State the central question, argument, and scholarly contribution.",
+        "Explain the interpretive approach and selection of sources.",
+        "Cite primary and secondary sources accurately.",
+        "Identify permissions needed for images, archival materials, and quotations.",
+        "Disclose funding, conflicts of interest, and applicable ethical considerations."
+      ]
+    },
+    ar: {
+      subject: "العلوم الإنسانية",
+      title: "مجلة NHSS للعلوم الإنسانية",
+      description:
+        "مجلة علمية مقترحة للتاريخ واللغات والآداب والفلسفة والفنون والدراسات الثقافية.",
+      aims:
+        "تهدف المجلة المقترحة إلى دعم التفسير الأصيل والاستقصاء النقدي والنقاش الأكاديمي في العلوم الإنسانية. وستحدد قيادتها التحريرية نطاقها النهائي وسياسات النشر قبل الإطلاق.",
+      disciplines: [
+        ["التاريخ وعلم الآثار",
+         "التفسير التاريخي والمصادر الأولية والثقافة المادية والآثار."],
+        ["اللغات والآداب",
+         "اللغة والتحليل الأدبي والدراسات النصية والمقارنة."],
+        ["الفلسفة",
+         "الحجج الفلسفية والأخلاق ونظرية المعرفة والتقاليد الفكرية."],
+        ["الفنون والدراسات الثقافية",
+         "التعبير الفني والممارسات الثقافية والتراث والتفسير النقدي."]
+      ],
+      types: [
+        ["بحث أصيل",
+         "حجة أو قراءة علمية أصيلة تستند إلى مصادر موثقة."],
+        ["مقالة مراجعة علمية",
+         "مراجعة نقدية للدراسات المتعلقة بسؤال أو موضوع محدد."],
+        ["مراجعة كتاب",
+         "تقييم نقدي لكتاب أكاديمي وإسهامه العلمي."]
+      ],
+      checklist: [
+        "تقديم عنوان واضح وبيانات المؤلفين وملخص وكلمات مفتاحية.",
+        "توضيح السؤال المركزي والحجة والإسهام العلمي.",
+        "شرح المنهج التفسيري وأسس اختيار المصادر.",
+        "توثيق المصادر الأولية والثانوية بدقة.",
+        "تحديد الأذونات اللازمة للصور والمواد الأرشيفية والاقتباسات.",
+        "الإفصاح عن التمويل وتضارب المصالح والاعتبارات الأخلاقية ذات الصلة."
+      ]
+    }
+  },
+
+  social: {
+    en: {
+      subject: "Social Sciences",
+      title: "NHSS Journal of Social Sciences",
+      description:
+        "A proposed scholarly journal for sociology, psychology, economics, political science, anthropology, and education.",
+      aims:
+        "The proposed journal will support empirical, theoretical, and interpretive research on people, societies, and institutions. Its editorial leadership will establish the final scope and publication policies before launch.",
+      disciplines: [
+        ["Sociology and anthropology",
+         "Communities, social relationships, cultural practices, and institutions."],
+        ["Psychology",
+         "Behavior, cognition, human development, and social interaction."],
+        ["Economics and political science",
+         "Economic systems, public policy, governance, and political behavior."],
+        ["Education",
+         "Learning, teaching, educational institutions, and policy."]
+      ],
+      types: [
+        ["Original Research Article",
+         "Empirical or theoretical research with a clear scholarly contribution."],
+        ["Review Article",
+         "Critical synthesis of research addressing a defined topic."],
+        ["Case Study",
+         "An in-depth investigation of a case with a clear analytical approach."]
+      ],
+      checklist: [
+        "Provide a clear title, author information, abstract, and keywords.",
+        "Explain the research question, theoretical context, and contribution.",
+        "Describe sampling, data collection, and analysis where applicable.",
+        "Explain limitations and the boundaries of any conclusions.",
+        "Provide applicable ethics approvals, consent information, and privacy protections.",
+        "Disclose funding, conflicts of interest, and data availability."
+      ]
+    },
+    ar: {
+      subject: "العلوم الاجتماعية",
+      title: "مجلة NHSS للعلوم الاجتماعية",
+      description:
+        "مجلة علمية مقترحة لعلم الاجتماع وعلم النفس والاقتصاد والعلوم السياسية والأنثروبولوجيا والتربية.",
+      aims:
+        "تهدف المجلة المقترحة إلى دعم البحوث التجريبية والنظرية والتفسيرية حول الأفراد والمجتمعات والمؤسسات. وستحدد قيادتها التحريرية نطاقها النهائي وسياسات النشر قبل الإطلاق.",
+      disciplines: [
+        ["علم الاجتماع والأنثروبولوجيا",
+         "المجتمعات والعلاقات الاجتماعية والممارسات الثقافية والمؤسسات."],
+        ["علم النفس",
+         "السلوك والإدراك والنمو الإنساني والتفاعل الاجتماعي."],
+        ["الاقتصاد والعلوم السياسية",
+         "الأنظمة الاقتصادية والسياسات العامة والحوكمة والسلوك السياسي."],
+        ["التربية",
+         "التعلم والتدريس والمؤسسات والسياسات التعليمية."]
+      ],
+      types: [
+        ["بحث أصيل",
+         "بحث تجريبي أو نظري يقدم إسهامًا علميًا واضحًا."],
+        ["مقالة مراجعة علمية",
+         "مراجعة نقدية للبحوث المتعلقة بموضوع محدد."],
+        ["دراسة حالة",
+         "دراسة معمقة لحالة محددة باستخدام منهج تحليلي واضح."]
+      ],
+      checklist: [
+        "تقديم عنوان واضح وبيانات المؤلفين وملخص وكلمات مفتاحية.",
+        "توضيح السؤال البحثي والإطار النظري والإسهام العلمي.",
+        "وصف اختيار العينة وجمع البيانات وتحليلها عند الاقتضاء.",
+        "شرح حدود الدراسة ونطاق الاستنتاجات.",
+        "توفير موافقات الأخلاقيات ومعلومات الموافقة المستنيرة وحماية الخصوصية عند انطباقها.",
+        "الإفصاح عن التمويل وتضارب المصالح ومدى إتاحة البيانات."
+      ]
+    }
+  }
+};
+
+const requestedSubject =
+  new URLSearchParams(window.location.search).get("subject") || "natural";
+
+const subject = Object.prototype.hasOwnProperty.call(journals, requestedSubject)
+  ? requestedSubject
+  : "natural";
+
 let language = "en";
 let currentPanel = "overview";
+
+function makeElement(tag, text, className) {
+  const element = document.createElement(tag);
+  if (text !== undefined) element.textContent = text;
+  if (className) element.className = className;
+  return element;
+}
+
+function renderJournal() {
+  const journal = journals[subject][language];
+
+  document.querySelectorAll("[data-journal]").forEach(function(element) {
+    element.textContent = journal[element.dataset.journal];
+  });
+
+  const scopeGrid = document.querySelector("#scope-grid");
+  scopeGrid.replaceChildren();
+
+  journal.disciplines.forEach(function(discipline) {
+    const item = makeElement("article", undefined, "scope-item");
+
+    item.append(
+      makeElement("strong", discipline[0]),
+      makeElement("p", discipline[1])
+    );
+
+    scopeGrid.append(item);
+  });
+
+  const articleTypes = document.querySelector("#article-types");
+  articleTypes.replaceChildren();
+
+  journal.types.forEach(function(type) {
+    const item = makeElement("div", undefined, "article-type");
+
+    item.append(
+      makeElement("strong", type[0]),
+      makeElement("p", type[1])
+    );
+
+    articleTypes.append(item);
+  });
+
+  const checklist = document.querySelector("#journal-checklist");
+  checklist.replaceChildren();
+
+  journal.checklist.forEach(function(text) {
+    checklist.append(makeElement("li", text));
+  });
+
+  document.title = journal.title + (
+    language === "ar"
+      ? " | NHSS للنشر العلمي"
+      : " | NHSS Publishing"
+  );
+
+  document.querySelector('meta[name="description"]').content =
+    journal.description;
+}
 
 function setPanel(name, focusHeading) {
   const validNames = ["overview", "board", "guidelines", "issues"];
@@ -874,10 +1059,7 @@ function setPanel(name, focusHeading) {
   });
 
   if (focusHeading) {
-    const heading = document.querySelector(
-      "#" + currentPanel + " h2"
-    );
-
+    const heading = document.querySelector("#" + currentPanel + " h2");
     heading.setAttribute("tabindex", "-1");
     heading.focus();
   }
@@ -902,24 +1084,17 @@ function setLanguage(value) {
     );
   });
 
-  document.title = language === "ar"
-    ? "مجلة العلوم الطبيعية | NHSS للنشر العلمي"
-    : "Journal of Natural Sciences | NHSS Publishing";
-
-  document.querySelector('meta[name="description"]').content =
-    language === "ar"
-      ? "الصفحة التعريفية المقترحة لمجلة NHSS للعلوم الطبيعية."
-      : "Proposed NHSS Journal of Natural Sciences.";
-
   document.querySelector("#main-navigation").setAttribute(
     "aria-label",
     language === "ar" ? "التنقل الرئيسي" : "Main navigation"
   );
 
+  renderJournal();
+
   try {
     localStorage.setItem("nhss-language", language);
   } catch (error) {
-    // Switching works even when browser storage is unavailable.
+    // Language switching works without browser storage.
   }
 }
 
@@ -941,8 +1116,7 @@ document.querySelectorAll("[data-open-panel]").forEach(function(button) {
   });
 });
 
-document.querySelector("#year").textContent =
-  new Date().getFullYear();
+document.querySelector("#year").textContent = new Date().getFullYear();
 
 try {
   language = localStorage.getItem("nhss-language") || "en";
