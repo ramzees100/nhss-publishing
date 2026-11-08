@@ -829,35 +829,24 @@ function renderCollections() {
       )
     );
 
-    card.append(details);
+      card.append(details);
+
     if (item.kind === "journals" && item.subject === "natural") {
-  const journalLink = document.createElement("a");
+      const journalLink = document.createElement("a");
 
-  journalLink.href = "journal.html";
-  journalLink.textContent =
-    language === "ar" ? "زيارة صفحة المجلة" : "Visit journal";
+      journalLink.href = "journal.html";
+      journalLink.textContent =
+        language === "ar" ? "زيارة صفحة المجلة" : "Visit journal";
 
-  journalLink.style.cssText =
-    "display:inline-block;margin-top:18px;color:var(--blue);font-weight:bold;";
+      journalLink.style.cssText =
+        "display:inline-block;margin-top:18px;color:var(--blue);font-weight:bold;";
 
-  card.append(journalLink);
-}
-    if (item.kind === "journals" && item.subject === "natural") {
-  const journalLink = document.createElement("a");
+      card.append(journalLink);
+    }
 
-  journalLink.href = "journal.html";
-  journalLink.textContent =
-    language === "ar" ? "زيارة صفحة المجلة" : "Visit journal";
-
-  journalLink.style.cssText =
-    "display:inline-block;margin-top:18px;color:var(--blue);font-weight:bold;";
-
-  card.append(journalLink);
-}
     cards.append(card);
   });
 }
-
 function setLanguage(value) {
   language = value === "ar" ? "ar" : "en";
   const t = translations[language];
