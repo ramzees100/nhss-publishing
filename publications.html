@@ -831,20 +831,23 @@ function renderCollections() {
 
       card.append(details);
 
-    if (item.kind === "journals") {
-  const journalLink = document.createElement("a");
+    const collectionLink = document.createElement("a");
 
-  journalLink.href =
-    "journal.html?subject=" + encodeURIComponent(item.subject);
+const isJournal = item.kind === "journals";
 
-  journalLink.textContent =
-    language === "ar" ? "زيارة صفحة المجلة" : "Visit journal";
+collectionLink.href =
+  (isJournal ? "journal.html" : "conference.html") +
+  "?subject=" + encodeURIComponent(item.subject);
 
-  journalLink.style.cssText =
-    "display:inline-block;margin-top:18px;color:var(--blue);font-weight:bold;";
+collectionLink.textContent =
+  language === "ar"
+    ? (isJournal ? "زيارة صفحة المجلة" : "زيارة صفحة الوقائع")
+    : (isJournal ? "Visit journal" : "View proceedings collection");
 
-  card.append(journalLink);
-}
+collectionLink.style.cssText =
+  "display:inline-block;margin-top:18px;color:var(--blue);font-weight:bold;";
+
+card.append(collectionLink);
 
     cards.append(card);
   });
