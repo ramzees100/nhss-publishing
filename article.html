@@ -833,7 +833,13 @@ const samples = {
 };
 
 let language = "en";
-let selectedSample = "open-journal";
+const requestedPaper =
+  new URLSearchParams(window.location.search).get("id");
+
+let selectedSample =
+  Object.prototype.hasOwnProperty.call(samples, requestedPaper)
+    ? requestedPaper
+    : "open-journal";
 let currentPanel = "abstract";
 
 const selector = document.querySelector("#sample-selector");
