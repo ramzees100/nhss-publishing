@@ -843,6 +843,7 @@ let selectedSample =
 let currentPanel = "abstract";
 
 const selector = document.querySelector("#sample-selector");
+selector.value = selectedSample;
 const dialog = document.querySelector("#access-dialog");
 
 function setText(id, text) {
