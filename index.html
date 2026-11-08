@@ -653,11 +653,40 @@
             </span>
           </h1>
 
-          <p class="hero-description" data-i18n="heroDescription">
-            A developing home for research across the natural sciences,
-            humanities, and social sciences—welcoming ideas from
-            researchers around the world.
-          </p>
+         <form class="paper-search" id="paper-search" role="search">
+  <label for="paper-query" id="paper-search-label">
+    Search research papers
+  </label>
+
+  <div class="paper-search-row">
+    <input
+      type="search"
+      id="paper-query"
+      name="q"
+      placeholder="Search by title, keyword, or subject"
+      required
+    >
+
+    <button type="submit" id="paper-search-button">
+      Search
+    </button>
+  </div>
+
+  <p class="paper-search-hint" id="paper-search-hint">
+    Search the demonstration papers. Try “light” or “environment”.
+  </p>
+</form>
+
+<section
+  class="paper-search-results"
+  id="paper-search-results"
+  aria-labelledby="paper-results-heading"
+  hidden
+>
+  <h2 id="paper-results-heading">Search results</h2>
+  <p id="paper-results-status" role="status"></p>
+  <div id="paper-results-list"></div>
+</section>
 
           <div class="hero-actions">
             <a class="button button-light" href="#research-fields"
