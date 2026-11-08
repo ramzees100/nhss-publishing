@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submit a Paper | NHSS Publishing</title>
+
+<style>
+:root {
+  --navy:#08344c;
+  --blue:#006da0;
+  --ink:#183344;
+  --muted:#5d707c;
+  --line:#dce5eb;
+  --light:#f3f7fa;
+}
+
+* { box-sizing:border-box; }
+[hidden] { display:none !important; }
+
+body {
+  margin:0;
+  font:16px/1.7 Arial,Tahoma,sans-serif;
+  color:var(--ink);
+  background:var(--light);
+}
+
+a { color:var(--blue); text-decoration:none; }
+button,input,select,textarea { font:inherit; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline:3px solid #d79c28;
+  outline-offset:3px;
+}
+
+.container {
+  width:min(960px,90%);
+  margin-inline:auto;
+}
+
+header {
+  padding-block:20px;
+  background:white;
+  border-bottom:1px solid var(--line);
+}
+
+.header-inner,.languages,.actions {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.brand {
+  color:var(--navy);
+  font-size:25px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.languages button {
+  padding:6px 10px;
+  border:1px solid var(--line);
+  color:var(--ink);
+  background:white;
+  cursor:pointer;
+}
+
+.languages button[aria-pressed="true"] {
+  color:white;
+  background:var(--blue);
+}
+
+.hero {
+  padding-block:35px;
+  color:white;
+  background:var(--navy);
+}
+
+h1 { margin:12px 0; font-size:34px; }
+.hero a { color:#c5e9f4; }
+.hero p { max-width:740px; margin-bottom:0; }
+
+main { padding-block:30px 55px; }
+
+.notice {
+  padding:16px 20px;
+  margin-bottom:25px;
+  border-inline-start:4px solid var(--blue);
+  background:#e4eff6;
+  font-size:14px;
+}
+
+form,.preview {
+  padding:30px;
+  background:white;
+  border:1px solid var(--line);
+}
+
+fieldset {
+  padding:0 0 28px;
+  margin:0 0 28px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  min-width:0;
+}
+
+legend {
+  padding:0;
+  margin-bottom:18px;
+  font-size:22px;
+  font-weight:bold;
+}
+
+label {
+  display:block;
+  margin:18px 0 7px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+input:not([type="checkbox"]),select,textarea {
+  width:100%;
+  padding:11px 12px;
+  border:1px solid #b8cbd6;
+  background:white;
+  color:var(--ink);
+  border-radius:0;
+}
+
+textarea { min-height:150px; resize:vertical; }
+
+input[type="file"] { font-size:13px; }
+
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 22px;
+}
+
+.hint {
+  margin:7px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.author-row {
+  margin-bottom:18px;
+  padding:18px;
+  background:var(--light);
+  border:1px solid var(--line);
+}
+
+.author-row h3 { margin:0 0 8px; font-size:16px; }
+
+button.primary,button.secondary {
+  padding:11px 18px;
+  border:1px solid var(--blue);
+  font-weight:bold;
+  font-size:14px;
+  cursor:pointer;
+}
+
+button.primary { background:var(--blue); color:white; }
+button.secondary { background:white; color:var(--blue); }
+
+.remove-author {
+  margin-top:15px;
+  padding:5px 10px;
+  border:1px solid #b8cbd6;
+  background:white;
+  color:#8a3030;
+  cursor:pointer;
+}
+
+.check {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  font-weight:normal;
+}
+
+.check input {
+  margin-top:6px;
+  width:18px;
+  height:18px;
+  flex-shrink:0;
+}
+
+.preview { margin-top:28px; scroll-margin-top:20px; }
+.preview h2 { margin-top:0; }
+.preview h3 { margin-bottom:8px; }
+
+.preview dd {
+  margin:4px 0 18px;
+  overflow-wrap:anywhere;
+  white-space:pre-wrap;
+}
+
+.preview dt { font-weight:bold; font-size:14px; }
+
+footer {
+  padding-block:25px;
+  color:var(--muted);
+  font-size:13px;
+  text-align:center;
+}
+
+html[lang="ar"] body { line-height:1.95; }
+
+@media(max-width:600px) {
+  .grid { grid-template-columns:1fr; }
+  form,.preview { padding:20px; }
+  h1 { font-size:28px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="index.html"><bdi>NHSS</bdi></a>
+
+    <a href="publications.html" data-i18n="publications">Publications</a>
+
+    <div class="languages" role="group" aria-label="Language / اللغة">
+      <button type="button" data-language="en"
+              aria-pressed="true" lang="en">English</button>
+      <button type="button" data-language="ar"
+              aria-pressed="false" lang="ar">العربية</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <a href="index.html" data-i18n="home">Home</a>
+    <h1 data-i18n="title">Prepare a paper submission</h1>
+    <p data-i18n="intro">
+      Preview the information authors will provide before editorial assessment.
+    </p>
+  </div>
+</section>
+
+<main class="container">
+  <div class="notice" data-i18n="notice">
+    Demonstration only. Information stays in this open page and is not saved
+    or sent. Selected files are not uploaded or read. Use sample information.
+  </div>
+
+  <noscript>
+    <p>JavaScript is required. / يجب تفعيل جافاسكريبت.</p>
+  </noscript>
+
+  <form id="submission-form">
+    <fieldset>
+      <legend data-i18n="paperDetails">1. Paper details</legend>
+
+      <div class="grid">
+        <div>
+          <label for="venue" data-i18n="venue">Proposed publication *</label>
+          <select id="venue" required>
+            <option value="" data-i18n="choose">Select an option</option>
+            <option value="natural" data-i18n="natural">
+              NHSS Journal of Natural Sciences
+            </option>
+            <option value="humanities" data-i18n="humanities">
+              NHSS Journal of Humanities
+            </option>
+            <option value="social" data-i18n="social">
+              NHSS Journal of Social Sciences
+            </option>
+          </select>
+
+          <p class="hint" data-i18n="conferenceNote">
+            Conference submissions will open through specific event pages
+            when actual events are announced.
+          </p>
+        </div>
+
+        <div>
+          <label for="article-type" data-i18n="articleType">Article type *</label>
+          <select id="article-type" required>
+            <option value="" data-i18n="choose">Select an option</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="paper-title" data-i18n="paperTitle">Paper title *</label>
+      <input id="paper-title" required maxlength="400" dir="auto">
+
+      <label for="abstract" data-i18n="abstract">Abstract *</label>
+      <textarea id="abstract" required maxlength="10000" dir="auto"></textarea>
+
+      <div class="grid">
+        <div>
+          <label for="keywords" data-i18n="keywords">Keywords *</label>
+          <input id="keywords" required maxlength="500" dir="auto">
+          <p class="hint" data-i18n="keywordsHint">Separate keywords with commas.</p>
+        </div>
+
+        <div>
+          <label for="manuscript-language" data-i18n="manuscriptLanguage">
+            Manuscript language *
+          </label>
+          <select id="manuscript-language" required>
+            <option value="" data-i18n="choose">Select an option</option>
+            <option value="en" data-i18n="english">English</option>
+            <option value="ar" data-i18n="arabic">Arabic</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="hint" data-i18n="languageNote">
+        Language choices are illustrative. Each journal will confirm its
+        accepted manuscript languages before launch.
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="authors">2. Authors</legend>
+
+      <p class="hint" data-i18n="authorsHint">
+        List authors in publication order. The first author listed below
+        is also the corresponding author for this preview.
+      </p>
+
+      <div id="author-list"></div>
+
+      <button type="button" class="secondary" id="add-author"
+              data-i18n="addAuthor">Add another author</button>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="files">3. Manuscript files</legend>
+
+      <label for="manuscript" data-i18n="manuscript">
+        Main manuscript — optional for this preview
+      </label>
+      <input id="manuscript" type="file" accept=".pdf,.doc,.docx">
+
+      <label for="supporting-files" data-i18n="supporting">
+        Supporting files — optional
+      </label>
+      <input id="supporting-files" type="file" multiple>
+
+      <p class="hint" data-i18n="filesHint">
+        Only filenames appear in the preview. No file contents leave your device.
+        Production file requirements will be set before submissions open.
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="declarations">4. Declarations</legend>
+
+      <p class="hint" data-i18n="declarationsHint">
+        These are proposed declarations for a future submission workflow.
+        Checking them here does not submit a manuscript or accept a publishing agreement.
+      </p>
+
+      <label class="check">
+        <input type="checkbox" required>
+        <span data-i18n="original">
+          The work is original, and reused material is appropriately acknowledged.
+        </span>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" required>
+        <span data-i18n="consent">
+          All listed authors have approved the manuscript and its submission.
+        </span>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" required>
+        <span data-i18n="ethics">
+          Applicable ethics approvals, consent, funding, and conflicts of
+          interest are disclosed in the manuscript.
+        </span>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" required>
+        <span data-i18n="previewConfirm">
+          I understand this is a demonstration and nothing will be submitted.
+        </span>
+      </label>
+    </fieldset>
+
+    <div class="actions">
+      <span class="hint" data-i18n="required">* Required for the preview</span>
+      <button class="primary" type="submit" data-i18n="previewButton">
+        Preview submission
+      </button>
+    </div>
+  </form>
+
+  <section class="preview" id="preview" hidden
+           aria-labelledby="preview-heading">
+    <h2 id="preview-heading" tabindex="-1" data-i18n="previewTitle">
+      Submission preview
+    </h2>
+
+    <div class="notice" data-i18n="notSubmitted">
+      Not submitted. No submission number has been created, no reviewer
+      has been contacted, and no information has been saved.
+    </div>
+
+    <dl id="preview-details"></dl>
+  </section>
+</main>
+
+<footer>
+  <span>© <span id="year"></span> <bdi>NHSS</bdi></span>
+  <span data-i18n="footer">Publishing · Submission workflow preview</span>
+</footer>
+
+<script>
+const english = {};
+
+document.querySelectorAll("[data-i18n]").forEach(function(element) {
+  english[element.dataset.i18n] = element.textContent.trim();
+});
+
+Object.assign(english, {
+  authorNumber: "Author",
+  name: "Full name *",
+  email: "Corresponding author email *",
+  affiliation: "Affiliation or independent researcher status *",
+  affiliationHint: "University, company, institute, or “Independent researcher”.",
+  remove: "Remove author",
+  research: "Original Research Article",
+  review: "Review Article",
+  short: "Short Communication",
+  book: "Book Review",
+  caseStudy: "Case Study",
+  none: "No file selected",
+  submittedAuthors: "Authors in order",
+  contact: "Corresponding author",
+  selectedFiles: "Selected filenames",
+  valid: "Preview completed. Nothing was submitted."
+});
+
+const arabic = {
+  publications: "المنشورات",
+  home: "الرئيسية",
+  title: "إعداد طلب تقديم ورقة بحثية",
+  intro: "عاين المعلومات التي سيقدمها المؤلفون قبل التقييم التحريري.",
+  notice:
+    "عرض تجريبي فقط. تبقى المعلومات في الصفحة المفتوحة ولا تُحفظ أو تُرسل. لا تُرفع الملفات المختارة ولا تُقرأ. استخدم بيانات تجريبية.",
+  paperDetails: "1. بيانات الورقة",
+  venue: "جهة النشر المقترحة *",
+  choose: "اختر من القائمة",
+  natural: "مجلة NHSS للعلوم الطبيعية",
+  humanities: "مجلة NHSS للعلوم الإنسانية",
+  social: "مجلة NHSS للعلوم الاجتماعية",
+  conferenceNote:
+    "سيُتاح تقديم أوراق المؤتمرات عبر صفحات فعاليات محددة عند الإعلان عن مؤتمرات فعلية.",
+  articleType: "نوع المقالة *",
+  paperTitle: "عنوان الورقة *",
+  abstract: "الملخص *",
+  keywords: "الكلمات المفتاحية *",
+  keywordsHint: "افصل بين الكلمات المفتاحية بفواصل.",
+  manuscriptLanguage: "لغة المخطوطة *",
+  english: "الإنجليزية",
+  arabic: "العربية",
+  languageNote:
+    "خيارات اللغة توضيحية. ستحدد كل مجلة لغات المخطوطات المقبولة قبل الإطلاق.",
+  authors: "2. المؤلفون",
+  authorsHint:
+    "أدرج المؤلفين بترتيب النشر. يُعد المؤلف الأول أدناه المؤلف المراسل أيضًا في هذه المعاينة.",
+  addAuthor: "إضافة مؤلف",
+  files: "3. ملفات المخطوطة",
+  manuscript: "المخطوطة الرئيسية — اختيارية في هذه المعاينة",
+  supporting: "الملفات الداعمة — اختيارية",
+  filesHint:
+    "تظهر أسماء الملفات فقط في المعاينة. لا تغادر محتويات الملفات جهازك. ستحدد متطلبات الملفات الفعلية قبل فتح التقديم.",
+  declarations: "4. الإقرارات",
+  declarationsHint:
+    "هذه إقرارات مقترحة لمسار تقديم مستقبلي. تحديدها هنا لا يرسل مخطوطة ولا يعني قبول اتفاقية نشر.",
+  original:
+    "العمل أصيل، وقد وُثقت المواد المعاد استخدامها بصورة مناسبة.",
+  consent:
+    "وافق جميع المؤلفين المدرجين على المخطوطة وتقديمها.",
+  ethics:
+    "تتضمن المخطوطة الإفصاحات اللازمة عن موافقات الأخلاقيات والموافقة المستنيرة والتمويل وتضارب المصالح عند انطباقها.",
+  previewConfirm:
+    "أفهم أن هذه نسخة تجريبية ولن يُرسل أي طلب.",
+  required: "* مطلوب للمعاينة",
+  previewButton: "معاينة طلب التقديم",
+  previewTitle: "معاينة طلب التقديم",
+  notSubmitted:
+    "لم يُرسل الطلب. لم يُنشأ رقم تقديم، ولم يُتواصل مع أي محكّم، ولم تُحفظ المعلومات.",
+  footer: "للنشر العلمي · معاينة مسار التقديم",
+  authorNumber: "المؤلف",
+  name: "الاسم الكامل *",
+  email: "البريد الإلكتروني للمؤلف المراسل *",
+  affiliation: "الانتماء المؤسسي أو صفة باحث مستقل *",
+  affiliationHint: "جامعة أو شركة أو معهد أو «باحث مستقل».",
+  remove: "إزالة المؤلف",
+  research: "بحث أصيل",
+  review: "مقالة مراجعة علمية",
+  short: "بحث قصير",
+  book: "مراجعة كتاب",
+  caseStudy: "دراسة حالة",
+  none: "لم يُحدّد ملف",
+  submittedAuthors: "المؤلفون بالترتيب",
+  contact: "المؤلف المراسل",
+  selectedFiles: "أسماء الملفات المختارة",
+  valid: "اكتملت المعاينة. لم يُرسل أي طلب."
+};
+
+const typeOptions = {
+  natural: ["research", "review", "short"],
+  humanities: ["research", "review", "book"],
+  social: ["research", "review", "caseStudy"]
+};
+
+let language = "en";
+let authorCounter = 0;
+
+const form = document.querySelector("#submission-form");
+const authorList = document.querySelector("#author-list");
+const venue = document.querySelector("#venue");
+const typeSelect = document.querySelector("#article-type");
+const preview = document.querySelector("#preview");
+
+function dictionary() {
+  return language === "ar" ? arabic : english;
+}
+
+function element(tag, text, className) {
+  const item = document.createElement(tag);
+  if (text !== undefined) item.textContent = text;
+  if (className) item.className = className;
+  return item;
+}
+
+function authorField(row, key, type, required) {
+  const wrapper = element("div");
+  const id = row.id + "-" + key;
+  const label = element("label");
+  label.htmlFor = id;
+  label.dataset.authorLabel = key;
+
+  const input = element("input");
+  input.id = id;
+  input.type = type;
+  input.required = required;
+  input.dataset.authorField = key;
+  input.maxLength = key === "affiliation" ? 500 : 250;
+  input.dir = key === "email" ? "ltr" : "auto";
+
+  wrapper.append(label, input);
+
+  if (key === "affiliation") {
+    const hint = element("p", "", "hint");
+    hint.dataset.authorHint = "";
+    wrapper.append(hint);
+  }
+
+  return wrapper;
+}
+
+function addAuthor() {
+  authorCounter++;
+
+  const row = element("section", undefined, "author-row");
+  row.id = "author-" + authorCounter;
+  row.append(element("h3"));
+
+  const grid = element("div", undefined, "grid");
+
+  grid.append(
+    authorField(row, "name", "text", true),
+    authorField(row, "affiliation", "text", true)
+  );
+
+  row.append(grid);
+
+  if (!authorList.children.length) {
+    row.append(authorField(row, "email", "email", true));
+  } else {
+    const remove = element("button", "", "remove-author");
+    remove.type = "button";
+
+    remove.addEventListener("click", function() {
+      row.remove();
+      preview.hidden = true;
+      translateAuthors();
+    });
+
+    row.append(remove);
+  }
+
+  authorList.append(row);
+  preview.hidden = true;
+  translateAuthors();
+}
+
+function translateAuthors() {
+  const t = dictionary();
+
+  authorList.querySelectorAll(".author-row").forEach(function(row, index) {
+    row.querySelector("h3").textContent = t.authorNumber + " " + (index + 1);
+
+    row.querySelectorAll("[data-authorLabel]").forEach(function(label) {
+      label.textContent = t[label.dataset.authorLabel];
+    });
+
+    row.querySelectorAll("[data-authorHint]").forEach(function(hint) {
+      hint.textContent = t.affiliationHint;
+    });
+
+    const remove = row.querySelector(".remove-author");
+    if (remove) remove.textContent = t.remove;
+  });
+}
+
+function updateArticleTypes() {
+  const t = dictionary();
+  const previous = typeSelect.value;
+
+  typeSelect.replaceChildren();
+
+  const placeholder = element("option", t.choose);
+  placeholder.value = "";
+  typeSelect.append(placeholder);
+
+  (typeOptions[venue.value] || []).forEach(function(key) {
+    const option = element("option", t[key]);
+    option.value = key;
+    typeSelect.append(option);
+  });
+
+  if ((typeOptions[venue.value] || []).includes(previous)) {
+    typeSelect.value = previous;
+  }
+
+  typeSelect.disabled = !venue.value;
+}
+
+function addPreviewField(label, value) {
+  document.querySelector("#preview-details").append(
+    element("dt", label),
+    element("dd", value)
+  );
+}
+
+function renderPreview() {
+  const t = dictionary();
+  document.querySelector("#preview-details").replaceChildren();
+
+  addPreviewField(t.venue, venue.selectedOptions[0].textContent);
+  addPreviewField(t.articleType, typeSelect.selectedOptions[0].textContent);
+  addPreviewField(t.paperTitle, document.querySelector("#paper-title").value);
+  addPreviewField(t.abstract, document.querySelector("#abstract").value);
+  addPreviewField(t.keywords, document.querySelector("#keywords").value);
+
+  const manuscriptLanguage = document.querySelector("#manuscript-language");
+  addPreviewField(
+    t.manuscriptLanguage,
+    manuscriptLanguage.selectedOptions[0].textContent
+  );
+
+  const authors = Array.from(authorList.children).map(function(row, index) {
+    const name = row.querySelector('[data-author-field="name"]').value;
+    const affiliation =
+      row.querySelector('[data-author-field="affiliation"]').value;
+
+    return (index + 1) + ". " + name + " — " + affiliation;
+  });
+
+  addPreviewField(t.submittedAuthors, authors.join("\n"));
+
+  addPreviewField(
+    t.contact,
+    authorList.querySelector('[data-author-field="email"]').value
+  );
+
+  const files = [
+    ...document.querySelector("#manuscript").files,
+    ...document.querySelector("#supporting-files").files
+  ];
+
+  addPreviewField(
+    t.selectedFiles,
+    files.length ? files.map(function(file) {
+      return file.name;
+    }).join("\n") : t.none
+  );
+}
+
+function setLanguage(value) {
+  language = value === "ar" ? "ar" : "en";
+  const t = dictionary();
+
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-i18n]").forEach(function(item) {
+    item.textContent = t[item.dataset.i18n];
+  });
+
+  document.querySelectorAll("[data-language]").forEach(function(button) {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.language === language)
+    );
+  });
+
+  document.title = language === "ar"
+    ? "تقديم ورقة بحثية | NHSS للنشر العلمي"
+    : "Submit a Paper | NHSS Publishing";
+
+  updateArticleTypes();
+  translateAuthors();
+
+  if (!preview.hidden) renderPreview();
+
+  try {
+    localStorage.setItem("nhss-language", language);
+  } catch (error) {
+    // Form data is never stored.
+  }
+}
+
+venue.addEventListener("change", function() {
+  typeSelect.value = "";
+  updateArticleTypes();
+});
+
+document.querySelector("#add-author").addEventListener("click", addAuthor);
+
+form.addEventListener("input", function() {
+  preview.hidden = true;
+});
+
+form.addEventListener("change", function() {
+  preview.hidden = true;
+});
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  renderPreview();
+  preview.hidden = false;
+  document.querySelector("#preview-heading").focus();
+});
+
+document.querySelectorAll("[data-language]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setLanguage(button.dataset.language);
+  });
+});
+
+document.querySelector("#year").textContent = new Date().getFullYear();
+
+try {
+  language = localStorage.getItem("nhss-language") || "en";
+} catch (error) {
+  language = "en";
+}
+
+addAuthor();
+setLanguage(language);
+</script>
+</body>
+</html>
