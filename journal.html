@@ -1,1 +1,957 @@
 
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Proposed NHSS Journal of Natural Sciences.">
+<title>Journal of Natural Sciences | NHSS Publishing</title>
+
+<style>
+:root {
+  --navy: #08344c;
+  --dark: #052638;
+  --blue: #006da0;
+  --ink: #183344;
+  --muted: #5d707c;
+  --line: #dce5eb;
+  --light: #f3f7fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: white;
+  color: var(--ink);
+  font-family: Arial, Tahoma, sans-serif;
+  line-height: 1.75;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #d79c28;
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(1180px, 90%);
+  margin-inline: auto;
+}
+
+.utility {
+  background: var(--dark);
+  color: #dbe8ef;
+}
+
+.utility-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-block: 9px;
+  font-size: 12px;
+}
+
+.languages {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.languages button {
+  padding: 4px 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: white;
+  font-size: 13px;
+}
+
+.languages button[aria-pressed="true"] {
+  border-color: #8db7ca;
+  background: #ffffff12;
+}
+
+header { border-bottom: 1px solid var(--line); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding-block: 23px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 48px;
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  font: bold 35px Georgia, serif;
+}
+
+.brand-name {
+  display: block;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.brand small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+nav a:hover,
+.text-link:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.hero {
+  padding-block: 38px 50px;
+  background: var(--navy);
+  color: white;
+}
+
+.breadcrumb {
+  margin-bottom: 30px;
+  color: #c0d7e3;
+  font-size: 13px;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.journal-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 225px;
+  padding: 22px;
+  border: 1px solid #86aabd;
+  background:
+    linear-gradient(140deg, transparent 45%, #ffffff12 45%, #ffffff12 47%, transparent 47%),
+    #0d4964;
+}
+
+.cover-brand {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.cover-title {
+  font: normal 23px/1.4 Georgia, serif;
+  color: #d8eee9;
+}
+
+.cover-label {
+  font-size: 10px;
+  color: #c0d7e3;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #ffffff18;
+  color: #c1ebdf;
+  font-size: 12px;
+}
+
+h1 {
+  margin: 15px 0;
+  font: normal clamp(32px, 4vw, 46px)/1.25 Georgia, serif;
+}
+
+.hero-description {
+  max-width: 780px;
+  color: #d6e5ed;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 19px;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.button-light {
+  border-color: white;
+  background: white;
+  color: var(--navy);
+}
+
+.button-outline {
+  border-color: #87a8ba;
+  background: transparent;
+  color: white;
+}
+
+.button:hover { filter: brightness(.95); }
+
+main { padding-block: 35px 65px; }
+
+.notice {
+  margin-bottom: 28px;
+  padding: 14px 18px;
+  border-inline-start: 3px solid var(--blue);
+  background: #eaf2f7;
+  color: #435e70;
+  font-size: 13px;
+}
+
+.journal-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 35px;
+  align-items: start;
+}
+
+.section-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-navigation button {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.section-navigation button[aria-pressed="true"] {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+
+.panel[hidden] { display: none; }
+
+h2 {
+  margin: 0 0 18px;
+  font: normal 30px/1.3 Georgia, serif;
+}
+
+h3 {
+  margin: 25px 0 10px;
+  font-size: 17px;
+}
+
+p { margin-top: 0; }
+
+.muted { color: var(--muted); }
+
+.scope-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-block: 22px;
+}
+
+.scope-item {
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--light);
+}
+
+.scope-item strong { display: block; }
+
+.scope-item p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.article-type {
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.article-type strong { display: block; }
+
+.article-type p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.sidebar-box {
+  margin-bottom: 20px;
+  padding: 23px;
+  border: 1px solid var(--line);
+}
+
+.sidebar-box h2 {
+  font-family: Arial, Tahoma, sans-serif;
+  font-size: 18px;
+}
+
+.facts { margin: 0; }
+
+.facts dt {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.facts dd {
+  margin: 3px 0 0;
+  font-size: 14px;
+}
+
+.empty-state {
+  padding: 30px;
+  background: var(--light);
+  border: 1px dashed #b9cbd5;
+}
+
+.empty-state h3 { margin-top: 0; }
+
+.checklist {
+  padding-inline-start: 22px;
+  color: var(--muted);
+}
+
+.checklist li { margin-bottom: 12px; }
+
+.policy-block {
+  margin-top: 25px;
+  padding: 22px;
+  background: var(--light);
+}
+
+.text-link {
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+footer {
+  padding-block: 30px;
+  background: var(--dark);
+  color: #d1e1ea;
+  font-size: 13px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+html[lang="ar"] body { line-height: 1.95; }
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] .cover-title {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+@media(max-width: 850px) {
+  .header-inner { flex-wrap: wrap; }
+  nav { width: 100%; gap: 18px; }
+  .journal-layout { grid-template-columns: 1fr; }
+
+  aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .sidebar-box { margin-bottom: 0; }
+}
+
+@media(max-width: 600px) {
+  .utility-scope { display: none; }
+  .utility-inner { justify-content: center; }
+  .hero-layout { grid-template-columns: 1fr; gap: 25px; }
+  .journal-cover { max-width: 170px; min-height: 210px; }
+  .scope-grid, aside { grid-template-columns: 1fr; }
+  .section-navigation button { flex-grow: 1; }
+}
+</style>
+</head>
+
+<body>
+<div class="utility">
+  <div class="container utility-inner">
+    <span class="utility-scope" data-i18n="scope">
+      Natural Sciences, Humanities, and Social Sciences
+    </span>
+
+    <div class="languages" role="group" aria-label="Language / اللغة">
+      <button type="button" data-language="en"
+              aria-pressed="true" lang="en">English</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" data-language="ar"
+              aria-pressed="false" lang="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">N</span>
+      <span>
+        <bdi class="brand-name">NHSS</bdi>
+        <small data-i18n="brand">Publishing & Discovery</small>
+      </span>
+    </a>
+
+    <nav id="main-navigation" aria-label="Main navigation">
+      <a href="index.html" data-i18n="home">Home</a>
+      <a href="publications.html" data-i18n="publications">Publications</a>
+      <a href="index.html#research-fields" data-i18n="fields">Research Fields</a>
+      <a href="index.html#authors" data-i18n="authors">For Authors</a>
+      <a href="index.html#about" data-i18n="about">About NHSS</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="home">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="publications.html" data-i18n="publications">Publications</a>
+      <span aria-hidden="true"> / </span>
+      <span data-i18n="natural">Natural Sciences</span>
+    </div>
+
+    <div class="hero-layout">
+      <div class="journal-cover" aria-hidden="true">
+        <bdi class="cover-brand">NHSS</bdi>
+        <div class="cover-title" data-i18n="natural">Natural Sciences</div>
+        <div class="cover-label" data-i18n="coverLabel">PROPOSED JOURNAL</div>
+      </div>
+
+      <div>
+        <span class="status" data-i18n="status">Proposed journal · In development</span>
+
+        <h1 data-i18n="journalTitle">NHSS Journal of Natural Sciences</h1>
+
+        <p class="hero-description" data-i18n="journalDescription">
+          A proposed scholarly journal for research in physics, chemistry,
+          biology, and earth and environmental sciences.
+        </p>
+
+        <div class="hero-actions">
+          <button class="button button-light" type="button"
+                  data-open-panel="guidelines" data-i18n="authorButton">
+            Author information
+          </button>
+
+          <button class="button button-outline" type="button"
+                  data-open-panel="issues" data-i18n="issuesButton">
+            Browse issues
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <div class="notice" data-i18n="notice">
+    This is a proposed journal page. Submissions are closed, no editorial
+    board has been appointed, and no articles or issues have been published.
+  </div>
+
+  <div class="journal-layout">
+    <div>
+      <div class="section-navigation" role="group"
+           aria-label="Journal sections / أقسام المجلة">
+        <button type="button" data-panel="overview"
+                aria-pressed="true" aria-controls="overview"
+                data-i18n="overview">Overview</button>
+
+        <button type="button" data-panel="board"
+                aria-pressed="false" aria-controls="board"
+                data-i18n="board">Editorial Board</button>
+
+        <button type="button" data-panel="guidelines"
+                aria-pressed="false" aria-controls="guidelines"
+                data-i18n="guidelines">Author Guidelines</button>
+
+        <button type="button" data-panel="issues"
+                aria-pressed="false" aria-controls="issues"
+                data-i18n="issues">Issues & Articles</button>
+      </div>
+
+      <section class="panel" id="overview" aria-labelledby="overview-heading">
+        <h2 id="overview-heading" data-i18n="aimsTitle">Aims and scope</h2>
+
+        <p class="muted" data-i18n="aimsText">
+          The proposed journal will provide a home for original research
+          and critical synthesis within the natural sciences. Its final
+          scope and publication policies will be established by its
+          editorial leadership before launch.
+        </p>
+
+        <div class="scope-grid">
+          <article class="scope-item">
+            <strong data-i18n="physics">Physics and astronomy</strong>
+            <p data-i18n="physicsText">
+              Physical phenomena, matter, energy, optics, and astronomical research.
+            </p>
+          </article>
+
+          <article class="scope-item">
+            <strong data-i18n="chemistry">Chemistry</strong>
+            <p data-i18n="chemistryText">
+              Chemical systems, materials, reactions, and analytical methods.
+            </p>
+          </article>
+
+          <article class="scope-item">
+            <strong data-i18n="biology">Biology and life sciences</strong>
+            <p data-i18n="biologyText">
+              Living systems, biological processes, ecology, and related research.
+            </p>
+          </article>
+
+          <article class="scope-item">
+            <strong data-i18n="earth">Earth and environmental sciences</strong>
+            <p data-i18n="earthText">
+              Earth systems, environmental processes, and natural resources.
+            </p>
+          </article>
+        </div>
+
+        <h3 data-i18n="typesTitle">Proposed article types</h3>
+
+        <div class="article-type">
+          <strong data-i18n="researchTitle">Original Research Article</strong>
+          <p data-i18n="researchText">
+            New findings supported by a clear research question,
+            appropriate methods, and evidence.
+          </p>
+        </div>
+
+        <div class="article-type">
+          <strong data-i18n="reviewTitle">Review Article</strong>
+          <p data-i18n="reviewText">
+            Critical synthesis of existing research on a defined topic.
+          </p>
+        </div>
+
+        <div class="article-type">
+          <strong data-i18n="shortTitle">Short Communication</strong>
+          <p data-i18n="shortText">
+            A focused research contribution presented in a shorter format.
+          </p>
+        </div>
+
+        <div class="policy-block">
+          <h3 style="margin-top:0" data-i18n="accessTitle">Access and publication fees</h3>
+          <p class="muted" data-i18n="accessText">
+            The journal’s access model, licensing terms, and any author
+            charges have not yet been decided. These will be published
+            before submissions open.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="board" hidden aria-labelledby="board-heading">
+        <h2 id="board-heading" data-i18n="board">Editorial Board</h2>
+
+        <div class="empty-state">
+          <h3 data-i18n="boardStatus">Editorial leadership is being developed.</h3>
+          <p class="muted" data-i18n="boardText">
+            No editor-in-chief, associate editors, or editorial board
+            members have been appointed for this proposed journal.
+          </p>
+        </div>
+
+        <h3 data-i18n="boardPlanTitle">Information to be published</h3>
+
+        <ul class="checklist">
+          <li data-i18n="boardPlan1">
+            Editors’ names, relevant expertise, and verified affiliations.
+          </li>
+          <li data-i18n="boardPlan2">
+            Editorial responsibilities and conflict-of-interest policies.
+          </li>
+          <li data-i18n="boardPlan3">
+            Official editorial contact information.
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel" id="guidelines" hidden
+               aria-labelledby="guidelines-heading">
+        <h2 id="guidelines-heading" data-i18n="guidelines">Author Guidelines</h2>
+
+        <p class="muted" data-i18n="guidelinesIntro">
+          The following is a preliminary preparation checklist, not final
+          submission instructions. Templates, length limits, review policies,
+          and submission requirements will be confirmed before launch.
+        </p>
+
+        <ul class="checklist">
+          <li data-i18n="check1">
+            Provide a clear title, author information, abstract, and keywords.
+          </li>
+          <li data-i18n="check2">
+            Explain the research question, methods, results, and limitations.
+          </li>
+          <li data-i18n="check3">
+            Cite relevant sources and identify reused material.
+          </li>
+          <li data-i18n="check4">
+            Include funding, authorship, and conflict-of-interest disclosures.
+          </li>
+          <li data-i18n="check5">
+            Provide applicable research ethics approvals and consent information.
+          </li>
+          <li data-i18n="check6">
+            Describe the availability of supporting data and code where relevant.
+          </li>
+        </ul>
+
+        <div class="policy-block">
+          <h3 style="margin-top:0" data-i18n="languageTitle">Manuscript languages</h3>
+          <p class="muted" data-i18n="languageText">
+            The website supports Arabic and English. Accepted manuscript
+            languages and translation requirements will be established
+            separately in the journal’s final author guidelines.
+          </p>
+        </div>
+
+        <div class="notice" data-i18n="submissionStatus">
+          Submissions are not open. Do not send manuscripts or payments
+          through this demonstration website.
+        </div>
+      </section>
+
+      <section class="panel" id="issues" hidden aria-labelledby="issues-heading">
+        <h2 id="issues-heading" data-i18n="issues">Issues & Articles</h2>
+
+        <div class="empty-state">
+          <h3 data-i18n="issuesEmptyTitle">No published issues yet.</h3>
+          <p class="muted" data-i18n="issuesEmptyText">
+            Published volumes, issues, and articles will appear here
+            after the journal launches. No publication dates have been set.
+          </p>
+
+          <a class="text-link" href="publications.html"
+             data-i18n="backCollections">Return to all collections</a>
+        </div>
+      </section>
+    </div>
+
+    <aside>
+      <section class="sidebar-box">
+        <h2 data-i18n="factsTitle">Journal information</h2>
+
+        <dl class="facts">
+          <dt data-i18n="publisherLabel">Publisher</dt>
+          <dd><bdi>NHSS</bdi> <span data-i18n="publisherName">Publishing</span></dd>
+
+          <dt data-i18n="subjectLabel">Subject area</dt>
+          <dd data-i18n="natural">Natural Sciences</dd>
+
+          <dt data-i18n="statusLabel">Publication status</dt>
+          <dd data-i18n="notLaunched">Not yet launched</dd>
+
+          <dt>ISSN / eISSN</dt>
+          <dd data-i18n="notAssigned">Not assigned</dd>
+
+          <dt data-i18n="frequencyLabel">Publication schedule</dt>
+          <dd data-i18n="notSet">Not yet established</dd>
+
+          <dt data-i18n="indexingLabel">Indexing</dt>
+          <dd data-i18n="indexingText">No indexing claims</dd>
+        </dl>
+      </section>
+
+      <section class="sidebar-box">
+        <h2 data-i18n="integrityTitle">Editorial integrity</h2>
+
+        <p class="muted" data-i18n="integrityText">
+          Review procedures, editorial independence, corrections, and
+          research ethics policies must be established before launch.
+        </p>
+
+        <a class="text-link" href="index.html#about"
+           data-i18n="aboutLink">About NHSS Publishing</a>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>
+      © <span id="year"></span> <bdi>NHSS</bdi>
+      <span data-i18n="copyright">Publishing. All rights reserved.</span>
+    </span>
+    <a href="publications.html" data-i18n="backCollections">
+      Return to all collections
+    </a>
+  </div>
+</footer>
+
+<script>
+const english = {};
+
+document.querySelectorAll("[data-i18n]").forEach(function(element) {
+  english[element.dataset.i18n] = element.textContent.trim();
+});
+
+const arabic = {
+  scope: "العلوم الطبيعية والإنسانية والاجتماعية",
+  brand: "النشر العلمي والاكتشاف",
+  home: "الرئيسية",
+  publications: "المنشورات",
+  fields: "المجالات البحثية",
+  authors: "للمؤلفين",
+  about: "عن NHSS",
+  natural: "العلوم الطبيعية",
+  coverLabel: "مجلة مقترحة",
+  status: "مجلة مقترحة · قيد التطوير",
+  journalTitle: "مجلة NHSS للعلوم الطبيعية",
+  journalDescription:
+    "مجلة علمية مقترحة للبحوث في الفيزياء والكيمياء والأحياء وعلوم الأرض والبيئة.",
+  authorButton: "معلومات المؤلفين",
+  issuesButton: "تصفّح الأعداد",
+  notice:
+    "هذه صفحة مجلة مقترحة. استقبال البحوث مغلق، ولم تُعيّن هيئة تحرير، ولم تُنشر أي مقالات أو أعداد.",
+  overview: "نظرة عامة",
+  board: "هيئة التحرير",
+  guidelines: "إرشادات المؤلفين",
+  issues: "الأعداد والمقالات",
+  aimsTitle: "الأهداف والنطاق",
+  aimsText:
+    "تهدف المجلة المقترحة إلى توفير مساحة للبحوث الأصيلة والمراجعات النقدية في العلوم الطبيعية. وستحدد قيادتها التحريرية نطاقها النهائي وسياسات النشر قبل الإطلاق.",
+
+  physics: "الفيزياء وعلم الفلك",
+  physicsText:
+    "الظواهر الفيزيائية والمادة والطاقة والبصريات والبحوث الفلكية.",
+  chemistry: "الكيمياء",
+  chemistryText:
+    "الأنظمة الكيميائية والمواد والتفاعلات وطرائق التحليل.",
+  biology: "الأحياء وعلوم الحياة",
+  biologyText:
+    "الأنظمة الحية والعمليات الحيوية وعلم البيئة والبحوث المرتبطة بها.",
+  earth: "علوم الأرض والبيئة",
+  earthText:
+    "أنظمة الأرض والعمليات البيئية والموارد الطبيعية.",
+
+  typesTitle: "أنواع المقالات المقترحة",
+  researchTitle: "بحث أصيل",
+  researchText:
+    "نتائج جديدة تستند إلى سؤال بحثي واضح ومنهجية مناسبة وأدلة داعمة.",
+  reviewTitle: "مقالة مراجعة علمية",
+  reviewText:
+    "تحليل نقدي يجمع البحوث المنشورة حول موضوع محدد.",
+  shortTitle: "بحث قصير",
+  shortText:
+    "مساهمة بحثية مركّزة تُعرض بصيغة مختصرة.",
+  accessTitle: "الوصول ورسوم النشر",
+  accessText:
+    "لم يُحدّد نموذج الوصول أو شروط الترخيص أو أي رسوم على المؤلفين بعد. وستُنشر هذه التفاصيل قبل فتح استقبال البحوث.",
+
+  boardStatus: "يجري العمل على تطوير القيادة التحريرية.",
+  boardText:
+    "لم يُعيّن رئيس تحرير أو محررون مشاركون أو أعضاء هيئة تحرير لهذه المجلة المقترحة.",
+  boardPlanTitle: "المعلومات التي ستُنشر",
+  boardPlan1:
+    "أسماء المحررين وتخصصاتهم وانتماءاتهم المؤسسية بعد التحقق منها.",
+  boardPlan2:
+    "المسؤوليات التحريرية وسياسات تضارب المصالح.",
+  boardPlan3:
+    "بيانات الاتصال الرسمية لهيئة التحرير.",
+
+  guidelinesIntro:
+    "القائمة التالية إرشادات أولية للإعداد، وليست تعليمات نهائية للتقديم. وستُعتمد القوالب وحدود الطول وسياسات التحكيم ومتطلبات التقديم قبل الإطلاق.",
+  check1:
+    "تقديم عنوان واضح وبيانات المؤلفين وملخص وكلمات مفتاحية.",
+  check2:
+    "توضيح السؤال البحثي والمنهجية والنتائج وحدود الدراسة.",
+  check3:
+    "توثيق المصادر ذات الصلة وتحديد المواد المعاد استخدامها.",
+  check4:
+    "إرفاق إفصاحات التمويل والتأليف وتضارب المصالح.",
+  check5:
+    "توفير موافقات أخلاقيات البحث ومعلومات الموافقة المستنيرة عند انطباقها.",
+  check6:
+    "توضيح مدى إتاحة البيانات والشيفرات الداعمة عند الاقتضاء.",
+  languageTitle: "لغات المخطوطات",
+  languageText:
+    "يدعم الموقع العربية والإنجليزية. أما لغات المخطوطات المقبولة ومتطلبات الترجمة فستُحدّد بصورة مستقلة في إرشادات المؤلفين النهائية.",
+  submissionStatus:
+    "لم يُفتح استقبال البحوث. لا ترسل مخطوطات أو مدفوعات عبر هذا الموقع التجريبي.",
+
+  issuesEmptyTitle: "لا توجد أعداد منشورة بعد.",
+  issuesEmptyText:
+    "ستظهر المجلدات والأعداد والمقالات هنا بعد إطلاق المجلة. ولم تُحدّد مواعيد النشر بعد.",
+  backCollections: "العودة إلى جميع المجموعات",
+
+  factsTitle: "معلومات المجلة",
+  publisherLabel: "الناشر",
+  publisherName: "للنشر العلمي",
+  subjectLabel: "المجال العلمي",
+  statusLabel: "حالة النشر",
+  notLaunched: "لم تُطلق بعد",
+  notAssigned: "لم يُخصّص",
+  frequencyLabel: "جدول النشر",
+  notSet: "لم يُحدّد بعد",
+  indexingLabel: "الفهرسة",
+  indexingText: "لا توجد ادعاءات بالفهرسة",
+  integrityTitle: "النزاهة التحريرية",
+  integrityText:
+    "يجب وضع إجراءات التحكيم وسياسات الاستقلالية التحريرية والتصحيح وأخلاقيات البحث قبل الإطلاق.",
+  aboutLink: "عن NHSS للنشر العلمي",
+  copyright: "للنشر العلمي. جميع الحقوق محفوظة."
+};
+
+let language = "en";
+let currentPanel = "overview";
+
+function setPanel(name, focusHeading) {
+  const validNames = ["overview", "board", "guidelines", "issues"];
+  currentPanel = validNames.includes(name) ? name : "overview";
+
+  document.querySelectorAll(".panel").forEach(function(panel) {
+    panel.hidden = panel.id !== currentPanel;
+  });
+
+  document.querySelectorAll("[data-panel]").forEach(function(button) {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.panel === currentPanel)
+    );
+  });
+
+  if (focusHeading) {
+    const heading = document.querySelector(
+      "#" + currentPanel + " h2"
+    );
+
+    heading.setAttribute("tabindex", "-1");
+    heading.focus();
+  }
+}
+
+function setLanguage(value) {
+  language = value === "ar" ? "ar" : "en";
+  const dictionary = language === "ar" ? arabic : english;
+
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-i18n]").forEach(function(element) {
+    const key = element.dataset.i18n;
+    element.textContent = dictionary[key] || english[key] || "";
+  });
+
+  document.querySelectorAll("[data-language]").forEach(function(button) {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.language === language)
+    );
+  });
+
+  document.title = language === "ar"
+    ? "مجلة العلوم الطبيعية | NHSS للنشر العلمي"
+    : "Journal of Natural Sciences | NHSS Publishing";
+
+  document.querySelector('meta[name="description"]').content =
+    language === "ar"
+      ? "الصفحة التعريفية المقترحة لمجلة NHSS للعلوم الطبيعية."
+      : "Proposed NHSS Journal of Natural Sciences.";
+
+  document.querySelector("#main-navigation").setAttribute(
+    "aria-label",
+    language === "ar" ? "التنقل الرئيسي" : "Main navigation"
+  );
+
+  try {
+    localStorage.setItem("nhss-language", language);
+  } catch (error) {
+    // Switching works even when browser storage is unavailable.
+  }
+}
+
+document.querySelectorAll("[data-language]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setLanguage(button.dataset.language);
+  });
+});
+
+document.querySelectorAll("[data-panel]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setPanel(button.dataset.panel, false);
+  });
+});
+
+document.querySelectorAll("[data-open-panel]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setPanel(button.dataset.openPanel, true);
+  });
+});
+
+document.querySelector("#year").textContent =
+  new Date().getFullYear();
+
+try {
+  language = localStorage.getItem("nhss-language") || "en";
+} catch (error) {
+  language = "en";
+}
+
+setLanguage(language);
+setPanel(currentPanel, false);
+</script>
+</body>
+</html>
