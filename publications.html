@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore journals and conference proceedings from NHSS Publishing.">
+<title>Publications | NHSS Publishing</title>
+
+<style>
+:root {
+  --navy: #08344c;
+  --dark: #052638;
+  --blue: #006da0;
+  --ink: #183344;
+  --muted: #5d707c;
+  --line: #dce5eb;
+  --light: #f3f7fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Tahoma, sans-serif;
+  color: var(--ink);
+  background: white;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #d79c28;
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(1180px, 90%);
+  margin-inline: auto;
+}
+
+.utility {
+  background: var(--dark);
+  color: #dbe8ef;
+}
+
+.utility-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-block: 9px;
+  font-size: 12px;
+}
+
+.languages {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.languages button {
+  background: transparent;
+  color: white;
+  border: 1px solid transparent;
+  padding: 4px 9px;
+  font-size: 13px;
+}
+
+.languages button[aria-pressed="true"] {
+  border-color: #8db7ca;
+  background: #ffffff12;
+}
+
+header { border-bottom: 1px solid var(--line); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding-block: 23px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 48px;
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  font: bold 35px Georgia, serif;
+}
+
+.brand-name {
+  display: block;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+nav a:hover { color: var(--blue); }
+nav a[aria-current="page"] { color: var(--blue); }
+
+.page-heading {
+  padding-block: 50px;
+  background: var(--navy);
+  color: white;
+}
+
+.breadcrumb {
+  margin-bottom: 25px;
+  color: #c0d7e3;
+  font-size: 13px;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #a7e1d2;
+}
+
+h1 {
+  margin: 12px 0 18px;
+  font: normal 46px/1.2 Georgia, serif;
+}
+
+.page-heading p {
+  max-width: 730px;
+  color: #d6e5ed;
+}
+
+main { padding-block: 40px 70px; }
+
+.notice {
+  padding: 14px 18px;
+  background: #eaf2f7;
+  border-inline-start: 3px solid var(--blue);
+  color: #435e70;
+  font-size: 13px;
+}
+
+.collection-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-block: 30px;
+}
+
+.collection-button {
+  padding: 14px 24px;
+  border: 1px solid #afc3ce;
+  color: var(--ink);
+  background: white;
+  font-weight: bold;
+}
+
+.collection-button[aria-pressed="true"] {
+  color: white;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.collection-description {
+  color: var(--muted);
+  max-width: 850px;
+  margin-bottom: 25px;
+}
+
+.search-form {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  background: var(--light);
+  border: 1px solid var(--line);
+}
+
+.search-form input {
+  flex: 1;
+  min-width: 0;
+}
+
+input, select {
+  border: 1px solid #b9cbd5;
+  border-radius: 0;
+  padding: 12px;
+  color: var(--ink);
+  background: white;
+}
+
+.primary {
+  padding: 12px 24px;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+}
+
+.library-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  align-items: start;
+  gap: 35px;
+  margin-top: 30px;
+}
+
+.filters {
+  padding: 23px;
+  border: 1px solid var(--line);
+}
+
+.filters h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.filters label {
+  display: block;
+  margin: 18px 0 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.filters select { width: 100%; }
+
+.reset {
+  margin-top: 22px;
+  padding: 9px 12px;
+  border: 1px solid #afc3ce;
+  background: white;
+  color: var(--blue);
+  width: 100%;
+}
+
+.result-count {
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--blue);
+  background: white;
+}
+
+.badge {
+  align-self: flex-start;
+  padding: 4px 9px;
+  background: #edf2f5;
+  color: #516775;
+  font-size: 11px;
+}
+
+.card h2 {
+  margin: 18px 0 12px;
+  font: normal 24px/1.4 Georgia, serif;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.card .subject {
+  font-size: 12px;
+  color: var(--blue);
+}
+
+.card details {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.card summary {
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 35px;
+  border: 1px dashed #b9cbd5;
+  color: var(--muted);
+}
+
+.guidance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.guidance article {
+  padding: 26px;
+  background: var(--light);
+}
+
+.guidance h2 {
+  font: normal 26px Georgia, serif;
+  margin-top: 0;
+}
+
+.guidance p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.guidance a {
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+footer {
+  padding-block: 30px;
+  background: var(--dark);
+  color: #d1e1ea;
+  font-size: 13px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+html[lang="ar"] body { line-height: 1.95; }
+
+html[lang="ar"] h1,
+html[lang="ar"] h2 {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+html[lang="ar"] .eyebrow { letter-spacing: normal; }
+
+@media(max-width: 850px) {
+  .header-inner { flex-wrap: wrap; }
+  nav { width: 100%; gap: 18px; }
+  .library-layout { grid-template-columns: 190px 1fr; gap: 20px; }
+  .cards { grid-template-columns: 1fr; }
+}
+
+@media(max-width: 600px) {
+  .utility-scope { display: none; }
+  .utility-inner { justify-content: center; }
+  h1 { font-size: 35px; }
+  .page-heading { padding-block: 35px; }
+  .search-form { flex-direction: column; }
+  .library-layout { grid-template-columns: 1fr; }
+  .guidance { grid-template-columns: 1fr; }
+  .collection-button { flex: 1; padding: 12px; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}
+</style>
+</head>
+
+<body>
+<div class="utility">
+  <div class="container utility-inner">
+    <span class="utility-scope" data-i18n="scope">
+      Natural Sciences, Humanities, and Social Sciences
+    </span>
+
+    <div class="languages" role="group" aria-label="Language / اللغة">
+      <button type="button" data-language="en"
+              aria-pressed="true" lang="en">English</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" data-language="ar"
+              aria-pressed="false" lang="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">N</span>
+      <span>
+        <bdi class="brand-name">NHSS</bdi>
+        <small data-i18n="brand">Publishing & Discovery</small>
+      </span>
+    </a>
+
+    <nav id="main-navigation" aria-label="Main navigation">
+      <a href="index.html" data-i18n="home">Home</a>
+      <a href="publications.html" aria-current="page"
+         data-i18n="publications">Publications</a>
+      <a href="index.html#research-fields" data-i18n="fields">Research Fields</a>
+      <a href="index.html#authors" data-i18n="authors">For Authors</a>
+      <a href="index.html#about" data-i18n="about">About NHSS</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-heading">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="home">Home</a>
+      <span aria-hidden="true"> / </span>
+      <span data-i18n="publications">Publications</span>
+    </div>
+
+    <div class="eyebrow" data-i18n="eyebrow">The NHSS publishing program</div>
+    <h1 data-i18n="title">Research across disciplines.</h1>
+    <p data-i18n="intro">
+      Explore our proposed journals and conference proceedings in the
+      natural sciences, humanities, and social sciences.
+    </p>
+  </div>
+</section>
+
+<main class="container">
+  <div class="notice" data-i18n="notice">
+    Website preview: all collections below are proposed examples.
+    No journals, conferences, or papers have been launched.
+  </div>
+
+  <div class="collection-switch" role="group" aria-label="Collection / المجموعة">
+    <button class="collection-button" type="button"
+            data-collection="journals" aria-pressed="true"
+            data-i18n="journals">Journals</button>
+
+    <button class="collection-button" type="button"
+            data-collection="conferences" aria-pressed="false"
+            data-i18n="conferences">Conference Proceedings</button>
+  </div>
+
+  <p class="collection-description" id="collection-description"></p>
+
+  <form class="search-form" id="search-form" role="search">
+    <input type="search" id="search-input"
+           placeholder="Search collection titles or topics"
+           aria-label="Search collections">
+
+    <button class="primary" type="submit" data-i18n="search">Search</button>
+  </form>
+
+  <div class="library-layout">
+    <aside class="filters">
+      <h2 data-i18n="filterTitle">Filter collections</h2>
+
+      <label for="subject" data-i18n="subject">Subject</label>
+      <select id="subject">
+        <option value="all" data-i18n="allSubjects">All subjects</option>
+        <option value="natural" data-i18n="natural">Natural Sciences</option>
+        <option value="humanities" data-i18n="humanities">Humanities</option>
+        <option value="social" data-i18n="social">Social Sciences</option>
+        <option value="cross" data-i18n="cross">Interdisciplinary</option>
+      </select>
+
+      <button class="reset" type="button" id="reset"
+              data-i18n="reset">Clear filters</button>
+    </aside>
+
+    <section aria-label="Collections" id="collection-results">
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+      <div class="cards" id="cards"></div>
+    </section>
+  </div>
+
+  <section class="guidance">
+    <article>
+      <h2 data-i18n="authorTitle">Planning to publish?</h2>
+      <p data-i18n="authorText">
+        Journal articles and conference papers follow different submission
+        routes. Each publication will define its scope, accepted article
+        types, and review requirements.
+      </p>
+      <a href="index.html#authors" data-i18n="authorLink">
+        Explore the author information
+      </a>
+    </article>
+
+    <article>
+      <h2 data-i18n="accessTitle">Open and paid access</h2>
+      <p data-i18n="accessText">
+        Access conditions will be shown on each published article.
+        Open-access articles will be freely available; other articles
+        may require purchase or a subscription.
+      </p>
+      <a href="index.html#publications" data-i18n="accessLink">
+        Learn about planned access options
+      </a>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>
+      © <span id="year"></span>
+      <bdi>NHSS</bdi>
+      <span data-i18n="copyright">Publishing. All rights reserved.</span>
+    </span>
+    <span data-i18n="development">Website in development.</span>
+  </div>
+</footer>
+
+<script>
+const translations = {
+  en: {
+    scope: "Natural Sciences, Humanities, and Social Sciences",
+    brand: "Publishing & Discovery",
+    home: "Home",
+    publications: "Publications",
+    fields: "Research Fields",
+    authors: "For Authors",
+    about: "About NHSS",
+    eyebrow: "The NHSS publishing program",
+    title: "Research across disciplines.",
+    intro: "Explore our proposed journals and conference proceedings in the natural sciences, humanities, and social sciences.",
+    notice: "Website preview: all collections below are proposed examples. No journals, conferences, or papers have been launched.",
+    journals: "Journals",
+    conferences: "Conference Proceedings",
+    journalDescription: "Journals publish articles within a defined academic scope. Each journal will have its own editorial board, author instructions, and accepted article types.",
+    conferenceDescription: "Conference proceedings bring together papers associated with a specific scholarly event. Each event will have its own dates, submission requirements, and review process.",
+    search: "Search",
+    searchPlaceholder: "Search collection titles or topics",
+    searchLabel: "Search collections",
+    filterTitle: "Filter collections",
+    subject: "Subject",
+    allSubjects: "All subjects",
+    natural: "Natural Sciences",
+    humanities: "Humanities",
+    social: "Social Sciences",
+    cross: "Interdisciplinary",
+    reset: "Clear filters",
+    proposed: "Proposed collection",
+    details: "Scope and planned article types",
+    articleTypes: "Planned article types",
+    journalStatus: "Editorial boards and submission requirements have not yet been established.",
+    conferenceStatus: "No event date, venue, or call for papers has been announced.",
+    empty: "No matching collections. Try another search or clear the filters.",
+    count: "matching proposed collections",
+    authorTitle: "Planning to publish?",
+    authorText: "Journal articles and conference papers follow different submission routes. Each publication will define its scope, accepted article types, and review requirements.",
+    authorLink: "Explore the author information",
+    accessTitle: "Open and paid access",
+    accessText: "Access conditions will be shown on each published article. Open-access articles will be freely available; other articles may require purchase or a subscription.",
+    accessLink: "Learn about planned access options",
+    copyright: "Publishing. All rights reserved.",
+    development: "Website in development.",
+    pageTitle: "Publications | NHSS Publishing",
+    meta: "Explore journals and conference proceedings from NHSS Publishing.",
+    navLabel: "Main navigation",
+    resultsLabel: "Collections"
+  },
+
+  ar: {
+    scope: "العلوم الطبيعية والإنسانية والاجتماعية",
+    brand: "النشر العلمي والاكتشاف",
+    home: "الرئيسية",
+    publications: "المنشورات",
+    fields: "المجالات البحثية",
+    authors: "للمؤلفين",
+    about: "عن NHSS",
+    eyebrow: "برنامج NHSS للنشر العلمي",
+    title: "بحوث تتجاوز حدود التخصصات.",
+    intro: "استكشف المجلات ووقائع المؤتمرات المقترحة في العلوم الطبيعية والإنسانية والاجتماعية.",
+    notice: "نسخة تجريبية للموقع: جميع المجموعات أدناه أمثلة مقترحة. لم تُطلق أي مجلات أو مؤتمرات أو أوراق بحثية بعد.",
+    journals: "المجلات العلمية",
+    conferences: "وقائع المؤتمرات",
+    journalDescription: "تنشر المجلات مقالات ضمن نطاق أكاديمي محدد. وستكون لكل مجلة هيئة تحرير وإرشادات للمؤلفين وأنواع مقالات مقبولة خاصة بها.",
+    conferenceDescription: "تجمع وقائع المؤتمرات الأوراق المرتبطة بفعالية علمية محددة. وستكون لكل فعالية مواعيد ومتطلبات تقديم وإجراءات تحكيم خاصة بها.",
+    search: "بحث",
+    searchPlaceholder: "ابحث في أسماء المجموعات أو موضوعاتها",
+    searchLabel: "البحث في المجموعات",
+    filterTitle: "تصفية المجموعات",
+    subject: "المجال",
+    allSubjects: "جميع المجالات",
+    natural: "العلوم الطبيعية",
+    humanities: "العلوم الإنسانية",
+    social: "العلوم الاجتماعية",
+    cross: "دراسات متعددة التخصصات",
+    reset: "مسح عوامل التصفية",
+    proposed: "مجموعة مقترحة",
+    details: "النطاق وأنواع المقالات المخطط لها",
+    articleTypes: "أنواع المقالات المخطط لها",
+    journalStatus: "لم تُشكّل هيئات التحرير أو تُحدّد متطلبات التقديم بعد.",
+    conferenceStatus: "لم يُعلن موعد الفعالية أو مكانها أو الدعوة لتقديم الأوراق.",
+    empty: "لا توجد مجموعات مطابقة. جرّب بحثًا آخر أو امسح عوامل التصفية.",
+    count: "مجموعات مقترحة مطابقة",
+    authorTitle: "هل تخطط للنشر؟",
+    authorText: "تختلف مسارات تقديم مقالات المجلات وأوراق المؤتمرات. وستحدد كل جهة نشر نطاقها وأنواع المقالات المقبولة ومتطلبات التحكيم.",
+    authorLink: "اطّلع على معلومات المؤلفين",
+    accessTitle: "الوصول المفتوح والمدفوع",
+    accessText: "ستظهر شروط الوصول في صفحة كل مقالة منشورة. وستتاح مقالات الوصول المفتوح مجانًا، بينما قد تتطلب المقالات الأخرى الشراء أو الاشتراك.",
+    accessLink: "تعرّف على خيارات الوصول المخطط لها",
+    copyright: "للنشر العلمي. جميع الحقوق محفوظة.",
+    development: "الموقع قيد التطوير.",
+    pageTitle: "المنشورات | NHSS للنشر العلمي",
+    meta: "استكشف المجلات العلمية ووقائع المؤتمرات لدى NHSS للنشر العلمي.",
+    navLabel: "التنقل الرئيسي",
+    resultsLabel: "المجموعات"
+  }
+};
+
+const collections = [
+  {
+    kind: "journals",
+    subject: "natural",
+    en: {
+      title: "NHSS Journal of Natural Sciences",
+      description: "A proposed journal covering physics, chemistry, biology, and related natural sciences.",
+      types: "Original Research Articles; Review Articles; Short Communications."
+    },
+    ar: {
+      title: "مجلة NHSS للعلوم الطبيعية",
+      description: "مجلة مقترحة تغطي الفيزياء والكيمياء والأحياء وما يرتبط بها من العلوم الطبيعية.",
+      types: "البحوث الأصيلة؛ مقالات المراجعة العلمية؛ البحوث القصيرة."
+    }
+  },
+  {
+    kind: "journals",
+    subject: "humanities",
+    en: {
+      title: "NHSS Journal of Humanities",
+      description: "A proposed journal covering history, languages, literature, philosophy, and cultural studies.",
+      types: "Original Research Articles; Review Articles; Book Reviews."
+    },
+    ar: {
+      title: "مجلة NHSS للعلوم الإنسانية",
+      description: "مجلة مقترحة تغطي التاريخ واللغات والآداب والفلسفة والدراسات الثقافية.",
+      types: "البحوث الأصيلة؛ مقالات المراجعة العلمية؛ مراجعات الكتب."
+    }
+  },
+  {
+    kind: "journals",
+    subject: "social",
+    en: {
+      title: "NHSS Journal of Social Sciences",
+      description: "A proposed journal covering sociology, psychology, economics, education, and related fields.",
+      types: "Original Research Articles; Review Articles; Case Studies."
+    },
+    ar: {
+      title: "مجلة NHSS للعلوم الاجتماعية",
+      description: "مجلة مقترحة تغطي علم الاجتماع وعلم النفس والاقتصاد والتربية والمجالات المرتبطة بها.",
+      types: "البحوث الأصيلة؛ مقالات المراجعة العلمية؛ دراسات الحالة."
+    }
+  },
+  {
+    kind: "conferences",
+    subject: "natural",
+    en: {
+      title: "Natural Sciences Conference Proceedings",
+      description: "An example collection showing how papers from a future natural sciences conference could be organized.",
+      types: "Full Conference Papers; Short Papers, subject to event policies."
+    },
+    ar: {
+      title: "وقائع مؤتمر العلوم الطبيعية",
+      description: "مجموعة توضيحية تبيّن كيفية تنظيم أوراق مؤتمر مستقبلي في العلوم الطبيعية.",
+      types: "أوراق مؤتمر كاملة؛ أوراق قصيرة، وفق سياسات الفعالية."
+    }
+  },
+  {
+    kind: "conferences",
+    subject: "humanities",
+    en: {
+      title: "Humanities Conference Proceedings",
+      description: "An example collection for papers associated with a future humanities conference.",
+      types: "Full Conference Papers; Short Papers, subject to event policies."
+    },
+    ar: {
+      title: "وقائع مؤتمر العلوم الإنسانية",
+      description: "مجموعة توضيحية للأوراق المرتبطة بمؤتمر مستقبلي في العلوم الإنسانية.",
+      types: "أوراق مؤتمر كاملة؛ أوراق قصيرة، وفق سياسات الفعالية."
+    }
+  },
+  {
+    kind: "conferences",
+    subject: "social",
+    en: {
+      title: "Social Sciences Conference Proceedings",
+      description: "An example collection for papers associated with a future social sciences conference.",
+      types: "Full Conference Papers; Short Papers, subject to event policies."
+    },
+    ar: {
+      title: "وقائع مؤتمر العلوم الاجتماعية",
+      description: "مجموعة توضيحية للأوراق المرتبطة بمؤتمر مستقبلي في العلوم الاجتماعية.",
+      types: "أوراق مؤتمر كاملة؛ أوراق قصيرة، وفق سياسات الفعالية."
+    }
+  },
+  {
+    kind: "conferences",
+    subject: "cross",
+    en: {
+      title: "Interdisciplinary Research Conference Proceedings",
+      description: "An example collection connecting research across the natural sciences, humanities, and social sciences.",
+      types: "Full Conference Papers; Short Papers, subject to event policies."
+    },
+    ar: {
+      title: "وقائع مؤتمر البحوث متعددة التخصصات",
+      description: "مجموعة توضيحية تربط البحوث في العلوم الطبيعية والإنسانية والاجتماعية.",
+      types: "أوراق مؤتمر كاملة؛ أوراق قصيرة، وفق سياسات الفعالية."
+    }
+  }
+];
+
+let language = "en";
+let collection = "journals";
+let query = "";
+
+const searchInput = document.querySelector("#search-input");
+const subjectSelect = document.querySelector("#subject");
+
+function normalize(value) {
+  return value.toLowerCase()
+    .normalize("NFKC")
+    .replace(/[\u064B-\u065F\u0670\u0640]/g, "")
+    .replace(/[أإآ]/g, "ا")
+    .replace(/ى/g, "ي")
+    .trim();
+}
+
+function createElement(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
+}
+
+function renderCollections() {
+  const t = translations[language];
+  const subject = subjectSelect.value;
+  const search = normalize(query);
+
+  document.querySelector("#collection-description").textContent =
+    collection === "journals"
+      ? t.journalDescription
+      : t.conferenceDescription;
+
+  document.querySelectorAll("[data-collection]").forEach(function(button) {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.collection === collection)
+    );
+  });
+
+  const matching = collections.filter(function(item) {
+    const searchable = [
+      item.en.title, item.en.description, item.en.types,
+      item.ar.title, item.ar.description, item.ar.types,
+      translations.en[item.subject], translations.ar[item.subject]
+    ].join(" ");
+
+    return item.kind === collection
+      && (subject === "all" || item.subject === subject)
+      && normalize(searchable).includes(search);
+  });
+
+  document.querySelector("#result-count").textContent =
+    matching.length + " " + t.count;
+
+  const cards = document.querySelector("#cards");
+  cards.replaceChildren();
+
+  if (!matching.length) {
+    cards.append(createElement("div", "empty", t.empty));
+    return;
+  }
+
+  matching.forEach(function(item) {
+    const content = item[language];
+    const card = createElement("article", "card");
+
+    card.append(
+      createElement("span", "badge", t.proposed),
+      createElement("h2", "", content.title),
+      createElement("div", "subject", t[item.subject]),
+      createElement("p", "", content.description)
+    );
+
+    const details = document.createElement("details");
+    details.append(
+      createElement("summary", "", t.details),
+      createElement("p", "", t.articleTypes + ": " + content.types),
+      createElement(
+        "p", "",
+        item.kind === "journals" ? t.journalStatus : t.conferenceStatus
+      )
+    );
+
+    card.append(details);
+    cards.append(card);
+  });
+}
+
+function setLanguage(value) {
+  language = value === "ar" ? "ar" : "en";
+  const t = translations[language];
+
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+  document.title = t.pageTitle;
+  document.querySelector('meta[name="description"]').content = t.meta;
+
+  document.querySelectorAll("[data-i18n]").forEach(function(element) {
+    element.textContent = t[element.dataset.i18n];
+  });
+
+  document.querySelectorAll("[data-language]").forEach(function(button) {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.language === language)
+    );
+  });
+
+  searchInput.placeholder = t.searchPlaceholder;
+  searchInput.setAttribute("aria-label", t.searchLabel);
+
+  document.querySelector("#main-navigation")
+    .setAttribute("aria-label", t.navLabel);
+
+  document.querySelector("#collection-results")
+    .setAttribute("aria-label", t.resultsLabel);
+
+  try {
+    localStorage.setItem("nhss-language", language);
+  } catch (error) {
+    // Switching still works when browser storage is unavailable.
+  }
+
+  renderCollections();
+}
+
+document.querySelectorAll("[data-language]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setLanguage(button.dataset.language);
+  });
+});
+
+document.querySelectorAll("[data-collection]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    collection = button.dataset.collection;
+    renderCollections();
+  });
+});
+
+document.querySelector("#search-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  query = searchInput.value;
+  renderCollections();
+});
+
+subjectSelect.addEventListener("change", function() {
+  query = searchInput.value;
+  renderCollections();
+});
+
+document.querySelector("#reset").addEventListener("click", function() {
+  query = "";
+  searchInput.value = "";
+  subjectSelect.value = "all";
+  renderCollections();
+});
+
+document.querySelector("#year").textContent = new Date().getFullYear();
+
+try {
+  language = localStorage.getItem("nhss-language") || "en";
+} catch (error) {
+  language = "en";
+}
+
+setLanguage(language);
+</script>
+</body>
+</html>
