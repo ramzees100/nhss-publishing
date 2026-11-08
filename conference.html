@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Proposed NHSS conference collection.">
+<title>Conference Proceedings | NHSS Publishing</title>
+
+<style>
+:root {
+  --navy: #08344c;
+  --dark: #052638;
+  --blue: #006da0;
+  --ink: #183344;
+  --muted: #5d707c;
+  --line: #dce5eb;
+  --light: #f3f7fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: white;
+  font-family: Arial, Tahoma, sans-serif;
+  line-height: 1.75;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #d79c28;
+  outline-offset: 4px;
+}
+
+[hidden] { display: none !important; }
+
+.container {
+  width: min(1180px, 90%);
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  inset-inline-start: 12px;
+  z-index: 10;
+  background: white;
+  padding: 10px 16px;
+}
+
+.skip-link:focus { top: 12px; }
+
+.utility {
+  color: #dbe8ef;
+  background: var(--dark);
+}
+
+.utility-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-block: 9px;
+  font-size: 12px;
+}
+
+.languages {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.languages button {
+  padding: 4px 9px;
+  color: white;
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 13px;
+}
+
+.languages button[aria-pressed="true"] {
+  border-color: #8db7ca;
+  background: #ffffff12;
+}
+
+header { border-bottom: 1px solid var(--line); }
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  padding-block: 23px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 48px;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  font: bold 35px Georgia, serif;
+}
+
+.brand-name {
+  display: block;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.brand small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+nav a:hover,
+.text-link:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.hero {
+  padding-block: 35px 50px;
+  color: white;
+  background: var(--navy);
+}
+
+.breadcrumb {
+  margin-bottom: 28px;
+  color: #c0d7e3;
+  font-size: 13px;
+}
+
+.breadcrumb a:hover { text-decoration: underline; }
+
+.status {
+  display: inline-block;
+  padding: 5px 11px;
+  color: #c1ebdf;
+  background: #ffffff18;
+  font-size: 12px;
+}
+
+h1 {
+  max-width: 950px;
+  margin: 20px 0;
+  font: normal clamp(32px, 4vw, 46px)/1.25 Georgia, serif;
+}
+
+.hero-description {
+  max-width: 830px;
+  color: #d6e5ed;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.button {
+  padding: 11px 19px;
+  color: var(--navy);
+  background: white;
+  border: 1px solid white;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.button-outline {
+  color: white;
+  background: transparent;
+  border-color: #87a8ba;
+}
+
+main { padding-block: 35px 65px; }
+
+.notice {
+  padding: 15px 18px;
+  margin-bottom: 28px;
+  color: #435e70;
+  background: #eaf2f7;
+  border-inline-start: 3px solid var(--blue);
+  font-size: 13px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  align-items: start;
+  gap: 35px;
+}
+
+.section-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 18px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-navigation button {
+  padding: 10px 14px;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.section-navigation button[aria-pressed="true"] {
+  color: white;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+h2 {
+  margin: 0 0 18px;
+  font: normal 30px/1.3 Georgia, serif;
+}
+
+h3 {
+  margin: 24px 0 10px;
+  font-size: 17px;
+}
+
+p { margin-top: 0; }
+.muted { color: var(--muted); }
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-block: 24px;
+}
+
+.topic {
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: var(--light);
+}
+
+.topic strong { display: block; }
+
+.topic p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.empty-state {
+  padding: 28px;
+  border: 1px dashed #b9cbd5;
+  background: var(--light);
+}
+
+.empty-state h3 { margin-top: 0; }
+
+.checklist {
+  padding-inline-start: 22px;
+  color: var(--muted);
+}
+
+.checklist li { margin-bottom: 12px; }
+
+.policy {
+  padding: 22px;
+  margin-top: 25px;
+  background: var(--light);
+}
+
+.policy h3 { margin-top: 0; }
+
+.sidebar-box {
+  padding: 23px;
+  margin-bottom: 20px;
+  border: 1px solid var(--line);
+}
+
+.sidebar-box h2 {
+  font-family: Arial, Tahoma, sans-serif;
+  font-size: 18px;
+}
+
+.facts { margin: 0; }
+
+.facts dt {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.facts dd {
+  margin: 3px 0 0;
+  font-size: 14px;
+}
+
+.text-link {
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+footer {
+  padding-block: 30px;
+  color: #d1e1ea;
+  background: var(--dark);
+  font-size: 13px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+html[lang="ar"] body { line-height: 1.95; }
+
+html[lang="ar"] h1,
+html[lang="ar"] h2 {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+@media(max-width: 850px) {
+  .header-inner { flex-wrap: wrap; }
+  nav { width: 100%; gap: 18px; }
+  .layout { grid-template-columns: 1fr; }
+
+  aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .sidebar-box { margin-bottom: 0; }
+}
+
+@media(max-width: 600px) {
+  .utility-scope { display: none; }
+  .utility-inner { justify-content: center; }
+  .topic-grid, aside { grid-template-columns: 1fr; }
+  .section-navigation button { flex-grow: 1; }
+}
+</style>
+</head>
+
+<body>
+<a class="skip-link" href="#main-content" data-i18n="skip">
+  Skip to content
+</a>
+
+<div class="utility">
+  <div class="container utility-inner">
+    <span class="utility-scope" data-i18n="scope">
+      Natural Sciences, Humanities, and Social Sciences
+    </span>
+
+    <div class="languages" role="group" aria-label="Language / اللغة">
+      <button type="button" data-language="en"
+              aria-pressed="true" lang="en">English</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" data-language="ar"
+              aria-pressed="false" lang="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">N</span>
+      <span>
+        <bdi class="brand-name">NHSS</bdi>
+        <small data-i18n="brand">Publishing & Discovery</small>
+      </span>
+    </a>
+
+    <nav id="main-navigation" aria-label="Main navigation">
+      <a href="index.html" data-i18n="home">Home</a>
+      <a href="publications.html" data-i18n="publications">Publications</a>
+      <a href="index.html#research-fields" data-i18n="fields">Research Fields</a>
+      <a href="index.html#authors" data-i18n="authors">For Authors</a>
+      <a href="index.html#about" data-i18n="about">About NHSS</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="home">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="publications.html" data-i18n="publications">Publications</a>
+      <span aria-hidden="true"> / </span>
+      <span data-conference="subject"></span>
+    </div>
+
+    <span class="status" data-i18n="status">
+      Proposed collection · No event announced
+    </span>
+
+    <h1 data-conference="title">Conference Proceedings</h1>
+    <p class="hero-description" data-conference="description"></p>
+
+    <div class="hero-actions">
+      <button class="button" type="button" data-open-panel="guidelines"
+              data-i18n="guidelinesButton">Submission information</button>
+
+      <button class="button button-outline" type="button"
+              data-open-panel="proceedings" data-i18n="proceedingsButton">
+        Browse proceedings
+      </button>
+    </div>
+  </div>
+</section>
+
+<main class="container" id="main-content">
+  <noscript>
+    <p>This page requires JavaScript to display collection information.
+      / تتطلب هذه الصفحة تفعيل جافاسكريبت لعرض معلومات المجموعة.</p>
+  </noscript>
+
+  <div class="notice" data-i18n="notice">
+    This page demonstrates a proposed conference collection. No event,
+    dates, venue, committee, registration, or call for papers has been announced.
+  </div>
+
+  <div class="layout">
+    <div>
+      <div class="section-navigation" role="group"
+           aria-label="Conference sections / أقسام المؤتمر">
+        <button type="button" data-panel="overview"
+                aria-pressed="true" aria-controls="overview"
+                data-i18n="overview">Overview</button>
+
+        <button type="button" data-panel="committee"
+                aria-pressed="false" aria-controls="committee"
+                data-i18n="committee">Organizers & Committee</button>
+
+        <button type="button" data-panel="guidelines"
+                aria-pressed="false" aria-controls="guidelines"
+                data-i18n="guidelines">Submission Guidelines</button>
+
+        <button type="button" data-panel="proceedings"
+                aria-pressed="false" aria-controls="proceedings"
+                data-i18n="proceedings">Proceedings & Papers</button>
+      </div>
+
+      <section class="panel" id="overview" aria-labelledby="overview-heading">
+        <h2 id="overview-heading" data-i18n="overviewTitle">
+          About this proposed collection
+        </h2>
+
+        <p class="muted" data-conference="aims"></p>
+
+        <h3 data-i18n="topicsTitle">Illustrative research topics</h3>
+        <div class="topic-grid" id="topics"></div>
+
+        <div class="policy">
+          <h3 data-i18n="eventTitle">From collection to event</h3>
+          <p class="muted" data-i18n="eventText">
+            A collection describes a research area. Each future conference
+            edition will need its own identity, organizers, dates, submission
+            rules, and proceedings record.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" id="committee" hidden
+               aria-labelledby="committee-heading">
+        <h2 id="committee-heading" data-i18n="committee">
+          Organizers & Committee
+        </h2>
+
+        <div class="empty-state">
+          <h3 data-i18n="committeeEmptyTitle">No appointments announced.</h3>
+          <p class="muted" data-i18n="committeeEmptyText">
+            No organizing committee, scientific committee, program chairs,
+            or proceedings editors have been appointed for an event
+            in this collection.
+          </p>
+        </div>
+
+        <h3 data-i18n="committeePlanTitle">Information for future events</h3>
+
+        <ul class="checklist">
+          <li data-i18n="committee1">
+            Organizers, committee members, and verified affiliations.
+          </li>
+          <li data-i18n="committee2">
+            Responsibilities for review, program selection, and proceedings.
+          </li>
+          <li data-i18n="committee3">
+            Conflict-of-interest procedures and official contact information.
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel" id="guidelines" hidden
+               aria-labelledby="guidelines-heading">
+        <h2 id="guidelines-heading" data-i18n="guidelines">
+          Submission Guidelines
+        </h2>
+
+        <p class="muted" data-i18n="guidelinesIntro">
+          These are planning notes, not an active call for papers.
+          Each event will publish its own final submission instructions.
+        </p>
+
+        <ul class="checklist">
+          <li data-i18n="guide1">
+            Confirm the event scope, accepted paper types, and deadlines.
+          </li>
+          <li data-i18n="guide2">
+            Follow the event’s formatting, length, and language requirements.
+          </li>
+          <li data-i18n="guide3">
+            Provide author details, an abstract, keywords, and references.
+          </li>
+          <li data-i18n="guide4">
+            Include relevant ethics, funding, and conflict-of-interest disclosures.
+          </li>
+          <li data-i18n="guide5">
+            Follow the event’s originality and simultaneous-submission policies.
+          </li>
+          <li data-i18n="guide6">
+            Check review, presentation, registration, and proceedings requirements.
+          </li>
+        </ul>
+
+        <div class="policy">
+          <h3 data-i18n="typesTitle">Possible contribution formats</h3>
+          <p class="muted" data-i18n="typesText">
+            Full papers, short papers, and presentation abstracts may be
+            considered by future events. An accepted presentation or abstract
+            does not automatically mean a full paper will be published.
+          </p>
+        </div>
+
+        <div class="policy">
+          <h3 data-i18n="languageTitle">Language and access</h3>
+          <p class="muted" data-i18n="languageText">
+            Website language is separate from submission language.
+            Accepted languages, licensing, access conditions, and any fees
+            must be stated by each event before submissions open.
+          </p>
+        </div>
+
+        <div class="notice" data-i18n="closed">
+          Submissions and registration are not open. This page does not
+          accept manuscripts, registrations, or payments.
+        </div>
+      </section>
+
+      <section class="panel" id="proceedings" hidden
+               aria-labelledby="proceedings-heading">
+        <h2 id="proceedings-heading" data-i18n="proceedings">
+          Proceedings & Papers
+        </h2>
+
+        <div class="empty-state">
+          <h3 data-i18n="proceedingsEmptyTitle">No published proceedings yet.</h3>
+          <p class="muted" data-i18n="proceedingsEmptyText">
+            Future proceedings will identify the conference edition and
+            provide its published papers, authors, abstracts, and access information.
+          </p>
+
+          <a class="text-link" href="publications.html"
+             data-i18n="back">Return to all collections</a>
+        </div>
+      </section>
+    </div>
+
+    <aside>
+      <section class="sidebar-box">
+        <h2 data-i18n="factsTitle">Collection information</h2>
+
+        <dl class="facts">
+          <dt data-i18n="subjectLabel">Subject area</dt>
+          <dd data-conference="subject"></dd>
+
+          <dt data-i18n="eventStatusLabel">Event status</dt>
+          <dd data-i18n="notAnnounced">Not announced</dd>
+
+          <dt data-i18n="datesLabel">Dates and deadlines</dt>
+          <dd data-i18n="notSet">Not established</dd>
+
+          <dt data-i18n="venueLabel">Venue / online format</dt>
+          <dd data-i18n="notSet">Not established</dd>
+
+          <dt data-i18n="organizerLabel">Event organizer</dt>
+          <dd data-i18n="notAppointed">Not appointed</dd>
+
+          <dt data-i18n="identifierLabel">Proceedings identifiers</dt>
+          <dd data-i18n="notAssigned">Not assigned</dd>
+
+          <dt data-i18n="indexingLabel">Indexing</dt>
+          <dd data-i18n="indexingText">No indexing claims</dd>
+        </dl>
+      </section>
+
+      <section class="sidebar-box">
+        <h2 data-i18n="integrityTitle">Publication integrity</h2>
+        <p class="muted" data-i18n="integrityText">
+          Review criteria and editorial decisions must be independent of
+          registration or publication payments. No indexing or publication
+          outcome is promised on this demonstration page.
+        </p>
+        <a class="text-link" href="index.html#about"
+           data-i18n="aboutLink">About NHSS Publishing</a>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>
+      © <span id="year"></span> <bdi>NHSS</bdi>
+      <span data-i18n="copyright">Publishing. All rights reserved.</span>
+    </span>
+    <a href="publications.html" data-i18n="back">Return to all collections</a>
+  </div>
+</footer>
+
+<script>
+const english = {};
+
+document.querySelectorAll("[data-i18n]").forEach(function(element) {
+  english[element.dataset.i18n] = element.textContent.trim();
+});
+
+const arabic = {
+  skip: "انتقل إلى المحتوى",
+  scope: "العلوم الطبيعية والإنسانية والاجتماعية",
+  brand: "النشر العلمي والاكتشاف",
+  home: "الرئيسية",
+  publications: "المنشورات",
+  fields: "المجالات البحثية",
+  authors: "للمؤلفين",
+  about: "عن NHSS",
+  status: "مجموعة مقترحة · لم تُعلن فعالية",
+  guidelinesButton: "معلومات التقديم",
+  proceedingsButton: "تصفّح الوقائع",
+  notice:
+    "توضح هذه الصفحة مجموعة مؤتمرات مقترحة. لم يُعلن أي مؤتمر أو مواعيد أو مكان أو لجنة أو تسجيل أو دعوة لتقديم الأوراق.",
+  overview: "نظرة عامة",
+  committee: "المنظمون واللجنة العلمية",
+  guidelines: "إرشادات التقديم",
+  proceedings: "الوقائع والأوراق",
+  overviewTitle: "عن هذه المجموعة المقترحة",
+  topicsTitle: "أمثلة على الموضوعات البحثية",
+  eventTitle: "من المجموعة إلى الفعالية",
+  eventText:
+    "تصف المجموعة مجالًا بحثيًا. أما كل دورة مستقبلية من المؤتمر فتحتاج إلى هوية ومنظمين ومواعيد وقواعد تقديم وسجل وقائع خاص بها.",
+  committeeEmptyTitle: "لم تُعلن أي تعيينات.",
+  committeeEmptyText:
+    "لم تُعيّن لجنة تنظيمية أو علمية أو رؤساء للبرنامج أو محررون للوقائع لأي فعالية ضمن هذه المجموعة.",
+  committeePlanTitle: "معلومات الفعاليات المستقبلية",
+  committee1:
+    "المنظمون وأعضاء اللجان وانتماءاتهم المؤسسية بعد التحقق منها.",
+  committee2:
+    "مسؤوليات التحكيم واختيار البرنامج وإعداد الوقائع.",
+  committee3:
+    "إجراءات تضارب المصالح وبيانات الاتصال الرسمية.",
+  guidelinesIntro:
+    "هذه ملاحظات تخطيطية وليست دعوة مفتوحة لتقديم الأوراق. وستنشر كل فعالية تعليماتها النهائية الخاصة.",
+  guide1:
+    "التحقق من نطاق الفعالية وأنواع الأوراق المقبولة والمواعيد النهائية.",
+  guide2:
+    "اتباع متطلبات التنسيق والطول واللغة الخاصة بالفعالية.",
+  guide3:
+    "تقديم بيانات المؤلفين وملخص وكلمات مفتاحية ومراجع.",
+  guide4:
+    "إرفاق إفصاحات الأخلاقيات والتمويل وتضارب المصالح ذات الصلة.",
+  guide5:
+    "اتباع سياسات الأصالة والتقديم المتزامن الخاصة بالفعالية.",
+  guide6:
+    "مراجعة متطلبات التحكيم والعرض والتسجيل والنشر في الوقائع.",
+  typesTitle: "صيغ المساهمات المحتملة",
+  typesText:
+    "قد تقبل الفعاليات المستقبلية أوراقًا كاملة أو قصيرة أو ملخصات عروض. ولا يعني قبول عرض أو ملخص تلقائيًا نشر ورقة كاملة.",
+  languageTitle: "اللغة والوصول",
+  languageText:
+    "لغة الموقع منفصلة عن لغة التقديم. ويجب أن تحدد كل فعالية اللغات المقبولة والتراخيص وشروط الوصول وأي رسوم قبل فتح التقديم.",
+  closed:
+    "لم يُفتح التقديم أو التسجيل. لا تستقبل هذه الصفحة مخطوطات أو تسجيلات أو مدفوعات.",
+  proceedingsEmptyTitle: "لا توجد وقائع منشورة بعد.",
+  proceedingsEmptyText:
+    "ستحدد الوقائع المستقبلية دورة المؤتمر وتعرض أوراقه المنشورة ومؤلفيها وملخصاتها ومعلومات الوصول إليها.",
+  back: "العودة إلى جميع المجموعات",
+  factsTitle: "معلومات المجموعة",
+  subjectLabel: "المجال العلمي",
+  eventStatusLabel: "حالة الفعالية",
+  notAnnounced: "لم تُعلن",
+  datesLabel: "المواعيد والمواعيد النهائية",
+  notSet: "لم تُحدّد",
+  venueLabel: "المكان أو النمط الإلكتروني",
+  organizerLabel: "منظم الفعالية",
+  notAppointed: "لم يُعيّن",
+  identifierLabel: "معرّفات الوقائع",
+  notAssigned: "لم تُخصّص",
+  indexingLabel: "الفهرسة",
+  indexingText: "لا توجد ادعاءات بالفهرسة",
+  integrityTitle: "نزاهة النشر",
+  integrityText:
+    "يجب أن تكون معايير التحكيم والقرارات التحريرية مستقلة عن رسوم التسجيل أو النشر. ولا تقدم هذه الصفحة التجريبية وعودًا بالفهرسة أو بنتيجة النشر.",
+  aboutLink: "عن NHSS للنشر العلمي",
+  copyright: "للنشر العلمي. جميع الحقوق محفوظة."
+};
+
+const conferences = {
+  natural: {
+    en: {
+      subject: "Natural Sciences",
+      title: "Natural Sciences Conference Proceedings",
+      description:
+        "A proposed collection for papers associated with future natural sciences conferences.",
+      aims:
+        "This collection illustrates how future conference editions in the natural sciences could be presented. It is not an announcement of a scheduled event.",
+      topics: [
+        ["Physics and astronomy", "Matter, energy, optics, and the universe."],
+        ["Chemistry", "Chemical systems, materials, and analytical methods."],
+        ["Biology", "Living systems, biological processes, and ecology."],
+        ["Earth and environment", "Earth systems and environmental research."]
+      ]
+    },
+    ar: {
+      subject: "العلوم الطبيعية",
+      title: "وقائع مؤتمرات العلوم الطبيعية",
+      description:
+        "مجموعة مقترحة للأوراق المرتبطة بمؤتمرات مستقبلية في العلوم الطبيعية.",
+      aims:
+        "توضح هذه المجموعة كيفية عرض دورات مستقبلية لمؤتمرات العلوم الطبيعية. وهي ليست إعلانًا عن فعالية مجدولة.",
+      topics: [
+        ["الفيزياء وعلم الفلك", "المادة والطاقة والبصريات والكون."],
+        ["الكيمياء", "الأنظمة الكيميائية والمواد وطرائق التحليل."],
+        ["الأحياء", "الأنظمة الحية والعمليات الحيوية وعلم البيئة."],
+        ["الأرض والبيئة", "أنظمة الأرض والبحوث البيئية."]
+      ]
+    }
+  },
+
+  humanities: {
+    en: {
+      subject: "Humanities",
+      title: "Humanities Conference Proceedings",
+      description:
+        "A proposed collection for papers associated with future humanities conferences.",
+      aims:
+        "This collection illustrates how future humanities conference editions could connect original interpretation, critical inquiry, and scholarly exchange. No event is currently announced.",
+      topics: [
+        ["History and archaeology", "Historical sources and material culture."],
+        ["Languages and literature", "Language, texts, and comparative scholarship."],
+        ["Philosophy", "Arguments, ethics, and intellectual traditions."],
+        ["Arts and cultural studies", "Creative expression, heritage, and interpretation."]
+      ]
+    },
+    ar: {
+      subject: "العلوم الإنسانية",
+      title: "وقائع مؤتمرات العلوم الإنسانية",
+      description:
+        "مجموعة مقترحة للأوراق المرتبطة بمؤتمرات مستقبلية في العلوم الإنسانية.",
+      aims:
+        "توضح هذه المجموعة كيفية جمع التفسير الأصيل والاستقصاء النقدي والتبادل الأكاديمي في مؤتمرات مستقبلية للعلوم الإنسانية. ولم تُعلن فعالية حاليًا.",
+      topics: [
+        ["التاريخ وعلم الآثار", "المصادر التاريخية والثقافة المادية."],
+        ["اللغات والآداب", "اللغة والنصوص والدراسات المقارنة."],
+        ["الفلسفة", "الحجج والأخلاق والتقاليد الفكرية."],
+        ["الفنون والدراسات الثقافية", "التعبير الإبداعي والتراث والتفسير."]
+      ]
+    }
+  },
+
+  social: {
+    en: {
+      subject: "Social Sciences",
+      title: "Social Sciences Conference Proceedings",
+      description:
+        "A proposed collection for papers associated with future social sciences conferences.",
+      aims:
+        "This collection illustrates how future conferences could bring together research on individuals, societies, institutions, and public policy. No event is currently announced.",
+      topics: [
+        ["Sociology and anthropology", "Communities, culture, and social institutions."],
+        ["Psychology", "Behavior, cognition, and human development."],
+        ["Economics and politics", "Economic systems, governance, and policy."],
+        ["Education", "Learning, teaching, and educational research."]
+      ]
+    },
+    ar: {
+      subject: "العلوم الاجتماعية",
+      title: "وقائع مؤتمرات العلوم الاجتماعية",
+      description:
+        "مجموعة مقترحة للأوراق المرتبطة بمؤتمرات مستقبلية في العلوم الاجتماعية.",
+      aims:
+        "توضح هذه المجموعة كيفية جمع البحوث حول الأفراد والمجتمعات والمؤسسات والسياسات العامة ضمن مؤتمرات مستقبلية. ولم تُعلن فعالية حاليًا.",
+      topics: [
+        ["علم الاجتماع والأنثروبولوجيا", "المجتمعات والثقافة والمؤسسات الاجتماعية."],
+        ["علم النفس", "السلوك والإدراك والنمو الإنساني."],
+        ["الاقتصاد والسياسة", "الأنظمة الاقتصادية والحوكمة والسياسات."],
+        ["التربية", "التعلم والتدريس والبحوث التربوية."]
+      ]
+    }
+  },
+
+  cross: {
+    en: {
+      subject: "Interdisciplinary Research",
+      title: "Interdisciplinary Research Conference Proceedings",
+      description:
+        "A proposed collection connecting the natural sciences, humanities, and social sciences.",
+      aims:
+        "This collection illustrates future conferences examining questions that require more than one disciplinary perspective. No event is currently announced.",
+      topics: [
+        ["Environment and society", "Environmental change and its social dimensions."],
+        ["Science and culture", "Scientific knowledge in historical and cultural contexts."],
+        ["Research methods", "Approaches that connect different research traditions."],
+        ["Ethics and public policy", "Responsible research and evidence-informed decisions."]
+      ]
+    },
+    ar: {
+      subject: "البحوث متعددة التخصصات",
+      title: "وقائع مؤتمرات البحوث متعددة التخصصات",
+      description:
+        "مجموعة مقترحة تربط العلوم الطبيعية والإنسانية والاجتماعية.",
+      aims:
+        "توضح هذه المجموعة مؤتمرات مستقبلية تتناول أسئلة تتطلب أكثر من منظور تخصصي. ولم تُعلن فعالية حاليًا.",
+      topics: [
+        ["البيئة والمجتمع", "التغير البيئي وأبعاده الاجتماعية."],
+        ["العلم والثقافة", "المعرفة العلمية في سياقاتها التاريخية والثقافية."],
+        ["مناهج البحث", "مقاربات تربط تقاليد بحثية مختلفة."],
+        ["الأخلاق والسياسات العامة", "البحث المسؤول والقرارات المستندة إلى الأدلة."]
+      ]
+    }
+  }
+};
+
+const requested =
+  new URLSearchParams(window.location.search).get("subject") || "natural";
+
+const subject = Object.prototype.hasOwnProperty.call(conferences, requested)
+  ? requested
+  : "natural";
+
+let language = "en";
+
+function makeElement(tag, text, className) {
+  const element = document.createElement(tag);
+  if (text !== undefined) element.textContent = text;
+  if (className) element.className = className;
+  return element;
+}
+
+function renderConference() {
+  const content = conferences[subject][language];
+
+  document.querySelectorAll("[data-conference]").forEach(function(element) {
+    element.textContent = content[element.dataset.conference];
+  });
+
+  const topics = document.querySelector("#topics");
+  topics.replaceChildren();
+
+  content.topics.forEach(function(topic) {
+    const article = makeElement("article", undefined, "topic");
+
+    article.append(
+      makeElement("strong", topic[0]),
+      makeElement("p", topic[1])
+    );
+
+    topics.append(article);
+  });
+
+  document.title = content.title + (
+    language === "ar"
+      ? " | NHSS للنشر العلمي"
+      : " | NHSS Publishing"
+  );
+
+  document.querySelector('meta[name="description"]').content =
+    content.description;
+}
+
+function setLanguage(value) {
+  language = value === "ar" ? "ar" : "en";
+  const dictionary = language === "ar" ? arabic : english;
+
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-i18n]").forEach(function(element) {
+    const key = element.dataset.i18n;
+    element.textContent = dictionary[key] || english[key] || "";
+  });
+
+  document.querySelectorAll("[data-language]").forEach(function(button) {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.language === language)
+    );
+  });
+
+  document.querySelector("#main-navigation").setAttribute(
+    "aria-label",
+    language === "ar" ? "التنقل الرئيسي" : "Main navigation"
+  );
+
+  renderConference();
+
+  try {
+    localStorage.setItem("nhss-language", language);
+  } catch (error) {
+    // Language switching works without browser storage.
+  }
+}
+
+function setPanel(name, focusHeading) {
+  const valid = ["overview", "committee", "guidelines", "proceedings"];
+  const selected = valid.includes(name) ? name : "overview";
+
+  document.querySelectorAll(".panel").forEach(function(panel) {
+    panel.hidden = panel.id !== selected;
+  });
+
+  document.querySelectorAll("[data-panel]").forEach(function(button) {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.panel === selected)
+    );
+  });
+
+  if (focusHeading) {
+    const heading = document.querySelector("#" + selected + " h2");
+    heading.setAttribute("tabindex", "-1");
+    heading.focus();
+  }
+}
+
+document.querySelectorAll("[data-language]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setLanguage(button.dataset.language);
+  });
+});
+
+document.querySelectorAll("[data-panel]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setPanel(button.dataset.panel, false);
+  });
+});
+
+document.querySelectorAll("[data-open-panel]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    setPanel(button.dataset.openPanel, true);
+  });
+});
+
+document.querySelector("#year").textContent = new Date().getFullYear();
+
+try {
+  language = localStorage.getItem("nhss-language") || "en";
+} catch (error) {
+  language = "en";
+}
+
+setLanguage(language);
+setPanel("overview", false);
+</script>
+</body>
+</html>
