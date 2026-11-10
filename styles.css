@@ -105,6 +105,39 @@
     flex-direction: column;
     gap: 5px;
   }
+  /* Top-bar account links */
+
+.utility {
+  background: #000;
+}
+
+.utility-inner {
+  flex-wrap: wrap;
+}
+
+.account-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-inline-start: auto;
+  font-size: 13px;
+}
+
+.account-links a {
+  color: #fff;
+}
+
+.account-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .account-links {
+    margin-inline-start: 0;
+    justify-content: center;
+  }
+}
 
   .paper-search-row button {
     width: 100%;
