@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign In | NHSS Publishing</title>
+
+<style>
+:root {
+  --navy: #08344c;
+  --blue: #006da0;
+  --ink: #183344;
+  --muted: #5d707c;
+  --line: #dce5eb;
+  --light: #f3f7fa;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--light);
+  font: 16px/1.7 Arial, Tahoma, sans-serif;
+}
+
+a { color: var(--blue); text-decoration: none; }
+button, input { font: inherit; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #d79c28;
+  outline-offset: 4px;
+}
+
+header {
+  padding: 20px 5%;
+  background: white;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  color: var(--navy);
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.languages {
+  display: flex;
+  gap: 8px;
+}
+
+.languages button {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: white;
+  cursor: pointer;
+}
+
+.languages button[aria-pressed="true"] {
+  color: white;
+  background: var(--blue);
+}
+
+main {
+  width: min(480px, 90%);
+  margin: 45px auto;
+}
+
+.card {
+  padding: 32px;
+  background: white;
+  border: 1px solid var(--line);
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 29px;
+}
+
+.intro {
+  margin-bottom: 25px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.modes {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.modes button {
+  flex: 1;
+  padding: 10px;
+  background: white;
+  color: var(--blue);
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.modes button[aria-pressed="true"] {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+label {
+  display: block;
+  margin: 18px 0 7px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b8cbd6;
+  border-radius: 0;
+  color: var(--ink);
+  background: white;
+}
+
+.hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.primary {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  color: white;
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.notice {
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  border-inline-start: 3px solid var(--blue);
+  color: #435e70;
+  background: #e4eff6;
+  font-size: 13px;
+}
+
+#auth-message {
+  margin-top: 18px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 22px;
+  font-size: 14px;
+}
+
+footer {
+  padding: 0 20px 30px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+html[lang="ar"] body { line-height: 1.95; }
+
+@media (max-width: 500px) {
+  .card { padding: 23px; }
+  main { margin-block: 28px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a class="brand" href="index.html"><bdi>NHSS</bdi></a>
+
+  <div class="languages" role="group" aria-label="Language / اللغة">
+    <button type="button" data-language="en"
+            aria-pressed="true" lang="en">English</button>
+
+    <button type="button" data-language="ar"
+            aria-pressed="false" lang="ar">العربية</button>
+  </div>
+</header>
+
+<main>
+  <div class="notice" id="setup-notice" data-i18n="setup">
+    Account connection is being configured. Registration and sign-in
+    are not enabled yet.
+  </div>
+
+  <section class="card" aria-labelledby="page-title">
+    <h1 id="page-title" data-i18n="title">Your NHSS account</h1>
+
+    <p class="intro" data-i18n="intro">
+      Sign in to your account or register as an author.
+      Editorial and reviewer permissions are assigned separately.
+    </p>
+
+    <div class="modes" role="group" aria-label="Account action / إجراء الحساب">
+      <button type="button" id="signin-mode"
+              aria-pressed="true" data-i18n="signin">
+        Sign in
+      </button>
+
+      <button type="button" id="signup-mode"
+              aria-pressed="false" data-i18n="signup">
+        Create account
+      </button>
+    </div>
+
+    <form id="auth-form">
+      <div id="name-section" hidden>
+        <label for="full-name" data-i18n="name">Full name</label>
+        <input id="full-name" name="name" type="text"
+               autocomplete="name" maxlength="200" dir="auto">
+      </div>
+
+      <label for="email" data-i18n="email">Email address</label>
+      <input id="email" name="email" type="email"
+             autocomplete="username" required dir="ltr">
+
+      <label for="password" data-i18n="password">Password</label>
+      <input id="password" name="password" type="password"
+             autocomplete="current-password" required
+             aria-describedby="password-hint">
+
+      <p class="hint" id="password-hint" data-i18n="passwordHint">
+        Use your NHSS account password, not your database password.
+      </p>
+
+      <div id="registration-note" hidden>
+        <p class="hint" data-i18n="registrationNote">
+          Registration does not grant editor, reviewer, or administrator access.
+        </p>
+      </div>
+
+      <button class="primary" id="auth-submit" type="submit"
+              disabled data-i18n="signin">
+        Sign in
+      </button>
+    </form>
+
+    <p id="auth-message" role="status" aria-live="polite"></p>
+
+    <a class="back" href="index.html" data-i18n="back">
+      Return to the homepage
+    </a>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> <bdi>NHSS</bdi>
+  <span data-i18n="footer">Publishing</span>
+</footer>
+
+<script>
+(function () {
+  const translations = {
+    en: {
+      setup: "Account connection is being configured. Registration and sign-in are not enabled yet.",
+      title: "Your NHSS account",
+      intro: "Sign in to your account or register as an author. Editorial and reviewer permissions are assigned separately.",
+      signin: "Sign in",
+      signup: "Create account",
+      name: "Full name",
+      email: "Email address",
+      password: "Password",
+      passwordHint: "Use your NHSS account password, not your database password.",
+      signupHint: "Use a unique password of at least 12 characters.",
+      registrationNote: "Registration does not grant editor, reviewer, or administrator access.",
+      back: "Return to the homepage",
+      footer: "Publishing",
+      pageTitle: "Sign In | NHSS Publishing"
+    },
+
+    ar: {
+      setup: "يجري إعداد الاتصال بخدمة الحسابات. لم يُفعّل التسجيل أو تسجيل الدخول بعد.",
+      title: "حسابك في NHSS",
+      intro: "سجّل الدخول إلى حسابك أو أنشئ حساب مؤلف. تُمنح صلاحيات التحرير والتحكيم بصورة مستقلة.",
+      signin: "تسجيل الدخول",
+      signup: "إنشاء حساب",
+      name: "الاسم الكامل",
+      email: "البريد الإلكتروني",
+      password: "كلمة المرور",
+      passwordHint: "استخدم كلمة مرور حساب NHSS، وليس كلمة مرور قاعدة البيانات.",
+      signupHint: "استخدم كلمة مرور فريدة لا تقل عن 12 محرفًا.",
+      registrationNote: "إنشاء الحساب لا يمنح صلاحيات المحرر أو المحكّم أو مدير النظام.",
+      back: "العودة إلى الصفحة الرئيسية",
+      footer: "للنشر العلمي",
+      pageTitle: "تسجيل الدخول | NHSS للنشر العلمي"
+    }
+  };
+
+  let language = "en";
+  let mode = "signin";
+
+  const form = document.querySelector("#auth-form");
+  const submit = document.querySelector("#auth-submit");
+  const password = document.querySelector("#password");
+  const nameInput = document.querySelector("#full-name");
+
+  function render() {
+    const t = translations[language];
+    const isSignup = mode === "signup";
+
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+    document.title = t.pageTitle;
+
+    document.querySelectorAll("[data-i18n]").forEach(function (element) {
+      element.textContent = t[element.dataset.i18n];
+    });
+
+    document.querySelectorAll("[data-language]").forEach(function (button) {
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.language === language)
+      );
+    });
+
+    document.querySelector("#signin-mode").setAttribute(
+      "aria-pressed", String(!isSignup)
+    );
+
+    document.querySelector("#signup-mode").setAttribute(
+      "aria-pressed", String(isSignup)
+    );
+
+    document.querySelector("#name-section").hidden = !isSignup;
+    document.querySelector("#registration-note").hidden = !isSignup;
+
+    nameInput.required = isSignup;
+    nameInput.disabled = !isSignup;
+
+    password.autocomplete = isSignup
+      ? "new-password"
+      : "current-password";
+
+    if (isSignup) {
+      password.minLength = 12;
+    } else {
+      password.removeAttribute("minlength");
+    }
+
+    document.querySelector("#password-hint").textContent =
+      isSignup ? t.signupHint : t.passwordHint;
+
+    submit.textContent = isSignup ? t.signup : t.signin;
+
+    try {
+      localStorage.setItem("nhss-language", language);
+    } catch (error) {
+      // Only the language preference is stored.
+    }
+  }
+
+  document.querySelector("#signin-mode").addEventListener("click", function () {
+    mode = "signin";
+    password.value = "";
+    render();
+  });
+
+  document.querySelector("#signup-mode").addEventListener("click", function () {
+    mode = "signup";
+    password.value = "";
+    render();
+  });
+
+  document.querySelectorAll("[data-language]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      language = button.dataset.language;
+      render();
+    });
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    document.querySelector("#auth-message").textContent =
+      translations[language].setup;
+  });
+
+  document.querySelector("#year").textContent = new Date().getFullYear();
+
+  try {
+    language = localStorage.getItem("nhss-language") === "ar" ? "ar" : "en";
+  } catch (error) {
+    language = "en";
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>
