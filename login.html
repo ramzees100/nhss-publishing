@@ -312,7 +312,10 @@ html[lang="ar"] body { line-height: 1.95; }
   };
 
   let language = "en";
-  let mode = "signin";
+  let mode =
+  new URLSearchParams(window.location.search).get("mode") === "signup"
+    ? "signup"
+    : "signin";
 
   const form = document.querySelector("#auth-form");
   const submit = document.querySelector("#auth-submit");
