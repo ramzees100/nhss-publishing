@@ -580,10 +580,10 @@
   <div class="utility">
     <div class="container utility-inner">
       <div class="account-links">
-  <a href="login.html">Sign In / تسجيل الدخول</a>
-  <span aria-hidden="true">|</span>
-  <a href="login.html?mode=signup">Create Account / إنشاء حساب</a>
-</div>
+        <a href="login.html" data-i18n="signIn">Sign In</a>
+        <span aria-hidden="true">|</span>
+        <a href="login.html?mode=signup" data-i18n="createAccount">Create Account</a>
+      </div>
       <span class="utility-scope" data-i18n="scope">
         Natural Sciences, Humanities, and Social Sciences
       </span>
@@ -1090,6 +1090,8 @@
     });
 
     const arabic = {
+      signIn: "تسجيل الدخول",
+      createAccount: "إنشاء حساب",
       skip: "انتقل إلى المحتوى",
       scope: "العلوم الطبيعية والإنسانية والاجتماعية",
       brandSubtitle: "النشر العلمي والاكتشاف",
